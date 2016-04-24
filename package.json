@@ -36,9 +36,11 @@
       },
       {
         "ul": [
-          "Actively maintained",
-          "Written in ES6",
-          "Friendlier APIs to use with  virtual dom libraries"
+          "Converts text containing [ANSI color escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors) into equivalent HTML elements.",
+          "Allows converting the input into JSON output.",
+          "HTML escaping",
+          "Converts links into HTML elements",
+          "Friendly APIs to use with  virtual dom libraries"
         ]
       }
     ],
