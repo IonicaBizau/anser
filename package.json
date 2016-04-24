@@ -1,6 +1,6 @@
 {
   "name": "anser",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
@@ -29,5 +29,21 @@
     "example": "examples",
     "test": "test"
   },
-  "license": "MIT"
+  "blah": {
+    "description": [
+      {
+        "h2": "Features"
+      },
+      {
+        "ul": [
+          "Actively maintained",
+          "Written in ES6",
+          "Friendlier APIs to use with  virtual dom libraries"
+        ]
+      }
+    ],
+    "thanks": "This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:"
+  },
+  "license": "MIT",
+  "dependencies": {}
 }
