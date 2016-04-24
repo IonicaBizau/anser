@@ -1,36 +1,27 @@
 "use strict";
 
-    var ansi_up,
-
-        // check for nodeJS
-        hasModule = (typeof module !== 'undefined'),
-
-        // Normal and then Bright
-        ANSI_COLORS = [
-          [
-            { color: "0, 0, 0",        'class': "ansi-black"   },
-            { color: "187, 0, 0",      'class': "ansi-red"     },
-            { color: "0, 187, 0",      'class': "ansi-green"   },
-            { color: "187, 187, 0",    'class': "ansi-yellow"  },
-            { color: "0, 0, 187",      'class': "ansi-blue"    },
-            { color: "187, 0, 187",    'class': "ansi-magenta" },
-            { color: "0, 187, 187",    'class': "ansi-cyan"    },
-            { color: "255,255,255",    'class': "ansi-white"   }
-          ],
-          [
-            { color: "85, 85, 85",     'class': "ansi-bright-black"   },
-            { color: "255, 85, 85",    'class': "ansi-bright-red"     },
-            { color: "0, 255, 0",      'class': "ansi-bright-green"   },
-            { color: "255, 255, 85",   'class': "ansi-bright-yellow"  },
-            { color: "85, 85, 255",    'class': "ansi-bright-blue"    },
-            { color: "255, 85, 255",   'class': "ansi-bright-magenta" },
-            { color: "85, 255, 255",   'class': "ansi-bright-cyan"    },
-            { color: "255, 255, 255",  'class': "ansi-bright-white"   }
-          ]
-        ],
-
-        // 256 Colors Palette
-        PALETTE_COLORS;
+const ANSI_COLORS = [
+  [
+    { color: "0, 0, 0",        'class': "ansi-black"   },
+    { color: "187, 0, 0",      'class': "ansi-red"     },
+    { color: "0, 187, 0",      'class': "ansi-green"   },
+    { color: "187, 187, 0",    'class': "ansi-yellow"  },
+    { color: "0, 0, 187",      'class': "ansi-blue"    },
+    { color: "187, 0, 187",    'class': "ansi-magenta" },
+    { color: "0, 187, 187",    'class': "ansi-cyan"    },
+    { color: "255,255,255",    'class': "ansi-white"   }
+  ],
+  [
+    { color: "85, 85, 85",     'class': "ansi-bright-black"   },
+    { color: "255, 85, 85",    'class': "ansi-bright-red"     },
+    { color: "0, 255, 0",      'class': "ansi-bright-green"   },
+    { color: "255, 255, 85",   'class': "ansi-bright-yellow"  },
+    { color: "85, 85, 255",    'class': "ansi-bright-blue"    },
+    { color: "255, 85, 255",   'class': "ansi-bright-magenta" },
+    { color: "85, 255, 255",   'class': "ansi-bright-cyan"    },
+    { color: "255, 255, 255",  'class': "ansi-bright-white"   }
+  ]
+];
 
 module.exports = class Anser {
     static escape_for_html (txt) {
@@ -58,41 +49,33 @@ module.exports = class Anser {
     }
 
     setup_palette () {
-      PALETTE_COLORS = [];
+      this.PALETTE_COLORS = [];
+
       // Index 0..15 : System color
-      (function() {
-        var i, j;
-        for (i = 0; i < 2; ++i) {
-          for (j = 0; j < 8; ++j) {
-            PALETTE_COLORS.push(ANSI_COLORS[i][j]['color']);
+      for (let i = 0; i < 2; ++i) {
+          for (let j = 0; j < 8; ++j) {
+              this.PALETTE_COLORS.push(ANSI_COLORS[i][j]['color']);
           }
-        }
-      })();
+      }
 
       // Index 16..231 : RGB 6x6x6
       // https://gist.github.com/jasonm23/2868981#file-xterm-256color-yaml
-      (function() {
-        var levels = [0, 95, 135, 175, 215, 255];
-        var format = function (r, g, b) { return levels[r] + ', ' + levels[g] + ', ' + levels[b] };
-        var r, g, b;
-        for (r = 0; r < 6; ++r) {
-          for (g = 0; g < 6; ++g) {
-            for (b = 0; b < 6; ++b) {
-              PALETTE_COLORS.push(format.call(this, r, g, b));
-            }
+      var levels = [0, 95, 135, 175, 215, 255];
+      var format = (r, g, b) => levels[r] + ', ' + levels[g] + ', ' + levels[b];
+      var r, g, b;
+      for (let r = 0; r < 6; ++r) {
+        for (let g = 0; g < 6; ++g) {
+          for (let b = 0; b < 6; ++b) {
+            this.PALETTE_COLORS.push(format.call(this, r, g, b));
           }
         }
-      })();
+      }
 
       // Index 232..255 : Grayscale
-      (function() {
-        var level = 8;
-        var format = function(level) { return level + ', ' + level + ', ' + level };
-        var i;
-        for (i = 0; i < 24; ++i, level += 10) {
-          PALETTE_COLORS.push(format.call(this, level));
-        }
-      })();
+      var level = 8;
+      for (let i = 0; i < 24; ++i, level += 10) {
+        this.PALETTE_COLORS.push(format.call(this, level, level, level));
+      }
     }
 
     escape_for_html (txt) {
@@ -222,7 +205,6 @@ module.exports = class Anser {
         } else if ((num >= 100) && (num < 108)) {
           self.bg = ANSI_COLORS[1][(num % 10)][key];
         } else if (num === 38 || num === 48) { // extend color (38=fg, 48=bg)
-          (function() {
             var is_foreground = (num === 38);
             if (nums.length >= 1) {
               var mode = nums.shift();
@@ -230,13 +212,13 @@ module.exports = class Anser {
                 var palette_index = parseInt(nums.shift());
                 if (palette_index >= 0 && palette_index <= 255) {
                   if (!use_classes) {
-                    if (!PALETTE_COLORS) {
+                    if (!this.PALETTE_COLORS) {
                       self.setup_palette.call(self);
                     }
                     if (is_foreground) {
-                      self.fg = PALETTE_COLORS[palette_index];
+                      self.fg = this.PALETTE_COLORS[palette_index];
                     } else {
-                      self.bg = PALETTE_COLORS[palette_index];
+                      self.bg = this.PALETTE_COLORS[palette_index];
                     }
                   } else {
                     var klass = (palette_index >= 16)
@@ -273,7 +255,6 @@ module.exports = class Anser {
                 }
               }
             }
-          })();
         }
       }
 
