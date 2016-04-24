@@ -60,9 +60,9 @@ module.exports = class Anser {
 
       // Index 16..231 : RGB 6x6x6
       // https://gist.github.com/jasonm23/2868981#file-xterm-256color-yaml
-      var levels = [0, 95, 135, 175, 215, 255];
-      var format = (r, g, b) => levels[r] + ', ' + levels[g] + ', ' + levels[b];
-      var r, g, b;
+      let levels = [0, 95, 135, 175, 215, 255];
+      let format = (r, g, b) => levels[r] + ', ' + levels[g] + ', ' + levels[b];
+      let r, g, b;
       for (let r = 0; r < 6; ++r) {
         for (let g = 0; g < 6; ++g) {
           for (let b = 0; b < 6; ++b) {
@@ -72,7 +72,7 @@ module.exports = class Anser {
       }
 
       // Index 232..255 : Grayscale
-      var level = 8;
+      let level = 8;
       for (let i = 0; i < 24; ++i, level += 10) {
         this.PALETTE_COLORS.push(format.call(this, level, level, level));
       }
@@ -107,16 +107,16 @@ module.exports = class Anser {
     }
 
     process (txt, options, markup) {
-      var self = this;
-      var raw_text_chunks = txt.split(/\033\[/);
-      var first_chunk = raw_text_chunks.shift(); // the first chunk is not the result of the split
+      let self = this;
+      let raw_text_chunks = txt.split(/\033\[/);
+      let first_chunk = raw_text_chunks.shift(); // the first chunk is not the result of the split
 
-      var color_chunks = raw_text_chunks.map(function (chunk) {
+      let color_chunks = raw_text_chunks.map(function (chunk) {
         return self.process_chunk(chunk, options, markup);
       });
 
       if (options && options.json) {
-          var first = self.process_chunk_json("");
+          let first = self.process_chunk_json("");
           first.content = first_chunk;
           color_chunks.unshift(first);
           if (options.remove_empty) {
@@ -136,10 +136,10 @@ module.exports = class Anser {
 
       // Are we using classes or styles?
       options = typeof options == 'undefined' ? {} : options;
-      var use_classes = options.use_classes = typeof options.use_classes != 'undefined' && options.use_classes;
-      var key = options.key = use_classes ? 'class' : 'color';
+      let use_classes = options.use_classes = typeof options.use_classes != 'undefined' && options.use_classes;
+      let key = options.key = use_classes ? 'class' : 'color';
 
-      var result = {
+      let result = {
           content: text,
           fg: null,
           bg: null,
@@ -164,12 +164,12 @@ module.exports = class Anser {
       //
       // The last group is the text (including newlines) that is colored by
       // the other group's commands.
-      var matches = text.match(/^([!\x3c-\x3f]*)([\d;]*)([\x20-\x2c]*[\x40-\x7e])([\s\S]*)/m);
+      let matches = text.match(/^([!\x3c-\x3f]*)([\d;]*)([\x20-\x2c]*[\x40-\x7e])([\s\S]*)/m);
 
       if (!matches) return result;
 
-      var orig_txt = result.content = matches[4];
-      var nums = matches[2].split(';');
+      let orig_txt = result.content = matches[4];
+      let nums = matches[2].split(';');
 
       // We currently support only "SGR" (Select Graphic Rendition)
       // Simply ignore if not a SGR command.
@@ -181,11 +181,11 @@ module.exports = class Anser {
         return result;
       }
 
-      var self = this;
+      let self = this;
 
       while (nums.length > 0) {
-        var num_str = nums.shift();
-        var num = parseInt(num_str);
+        let num_str = nums.shift();
+        let num = parseInt(num_str);
 
         if (isNaN(num) || num === 0) {
           self.fg = self.bg = null;
@@ -205,11 +205,11 @@ module.exports = class Anser {
         } else if ((num >= 100) && (num < 108)) {
           self.bg = ANSI_COLORS[1][(num % 10)][key];
         } else if (num === 38 || num === 48) { // extend color (38=fg, 48=bg)
-            var is_foreground = (num === 38);
+            let is_foreground = (num === 38);
             if (nums.length >= 1) {
-              var mode = nums.shift();
+              let mode = nums.shift();
               if (mode === '5' && nums.length >= 1) { // palette color
-                var palette_index = parseInt(nums.shift());
+                let palette_index = parseInt(nums.shift());
                 if (palette_index >= 0 && palette_index <= 255) {
                   if (!use_classes) {
                     if (!this.PALETTE_COLORS) {
@@ -221,7 +221,7 @@ module.exports = class Anser {
                       self.bg = this.PALETTE_COLORS[palette_index];
                     }
                   } else {
-                    var klass = (palette_index >= 16)
+                    let klass = (palette_index >= 16)
                           ? ('ansi-palette-' + palette_index)
                           : ANSI_COLORS[palette_index > 7 ? 1 : 0][palette_index % 8]['class'];
                     if (is_foreground) {
@@ -232,11 +232,11 @@ module.exports = class Anser {
                   }
                 }
               } else if(mode === '2' && nums.length >= 3) { // true color
-                var r = parseInt(nums.shift());
-                var g = parseInt(nums.shift());
-                var b = parseInt(nums.shift());
+                let r = parseInt(nums.shift());
+                let g = parseInt(nums.shift());
+                let b = parseInt(nums.shift());
                 if ((r >= 0 && r <= 255) && (g >= 0 && g <= 255) && (b >= 0 && b <= 255)) {
-                  var color = r + ', ' + g + ', ' + b;
+                  let color = r + ', ' + g + ', ' + b;
                   if (!use_classes) {
                     if (is_foreground) {
                       self.fg = color;
@@ -261,9 +261,9 @@ module.exports = class Anser {
       if ((self.fg === null) && (self.bg === null)) {
         return result;
       } else {
-        var styles = [];
-        var classes = [];
-        var data = {};
+        let styles = [];
+        let classes = [];
+        let data = {};
 
         result.fg = self.fg;
         result.bg = self.bg;
@@ -277,21 +277,21 @@ module.exports = class Anser {
 
     process_chunk (text, options, markup) {
 
-      var self = this;
+      let self = this;
       options = options || {};
-      var jsonChunk = this.process_chunk_json(text, options, markup);
+      let jsonChunk = this.process_chunk_json(text, options, markup);
       if (options.json) { return jsonChunk; }
       if (jsonChunk.isEmpty()) { return ""; }
       if (!jsonChunk.was_processed) { return jsonChunk.content; }
-      var key = options.key;
-      var use_classes = options.use_classes;
+      let key = options.key;
+      let use_classes = options.use_classes;
 
-      var styles = [];
-      var classes = [];
-      var data = {};
-      var render_data = function (data) {
-        var fragments = [];
-        var key;
+      let styles = [];
+      let classes = [];
+      let data = {};
+      let render_data = function (data) {
+        let fragments = [];
+        let key;
         for (key in data) {
           if (data.hasOwnProperty(key)) {
             fragments.push('data-' + key + '="' + this.escape_for_html(data[key]) + '"');
