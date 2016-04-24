@@ -1,26 +1,26 @@
 "use strict";
 
 const ANSI_COLORS = [
-  [
-    { color: "0, 0, 0",        'class': "ansi-black"   },
-    { color: "187, 0, 0",      'class': "ansi-red"     },
-    { color: "0, 187, 0",      'class': "ansi-green"   },
-    { color: "187, 187, 0",    'class': "ansi-yellow"  },
-    { color: "0, 0, 187",      'class': "ansi-blue"    },
-    { color: "187, 0, 187",    'class': "ansi-magenta" },
-    { color: "0, 187, 187",    'class': "ansi-cyan"    },
-    { color: "255,255,255",    'class': "ansi-white"   }
-  ],
-  [
-    { color: "85, 85, 85",     'class': "ansi-bright-black"   },
-    { color: "255, 85, 85",    'class': "ansi-bright-red"     },
-    { color: "0, 255, 0",      'class': "ansi-bright-green"   },
-    { color: "255, 255, 85",   'class': "ansi-bright-yellow"  },
-    { color: "85, 85, 255",    'class': "ansi-bright-blue"    },
-    { color: "255, 85, 255",   'class': "ansi-bright-magenta" },
-    { color: "85, 255, 255",   'class': "ansi-bright-cyan"    },
-    { color: "255, 255, 255",  'class': "ansi-bright-white"   }
-  ]
+    [
+        { color: "0, 0, 0",        'class': "ansi-black"   }
+      , { color: "187, 0, 0",      'class': "ansi-red"     }
+      , { color: "0, 187, 0",      'class': "ansi-green"   }
+      , { color: "187, 187, 0",    'class': "ansi-yellow"  }
+      , { color: "0, 0, 187",      'class': "ansi-blue"    }
+      , { color: "187, 0, 187",    'class': "ansi-magenta" }
+      , { color: "0, 187, 187",    'class': "ansi-cyan"    }
+      , { color: "255,255,255",    'class': "ansi-white"   }
+    ]
+  , [
+        { color: "85, 85, 85",     'class': "ansi-bright-black"   }
+      , { color: "255, 85, 85",    'class': "ansi-bright-red"     }
+      , { color: "0, 255, 0",      'class': "ansi-bright-green"   }
+      , { color: "255, 255, 85",   'class': "ansi-bright-yellow"  }
+      , { color: "85, 85, 255",    'class': "ansi-bright-blue"    }
+      , { color: "255, 85, 255",   'class': "ansi-bright-magenta" }
+      , { color: "85, 255, 255",   'class': "ansi-bright-cyan"    }
+      , { color: "255, 255, 255",  'class': "ansi-bright-white"   }
+    ]
 ];
 
 module.exports = class Anser {
@@ -54,7 +54,7 @@ module.exports = class Anser {
       // Index 0..15 : System color
       for (let i = 0; i < 2; ++i) {
           for (let j = 0; j < 8; ++j) {
-              this.PALETTE_COLORS.push(ANSI_COLORS[i][j]['color']);
+              this.PALETTE_COLORS.push(ANSI_COLORS[i][j].color);
           }
       }
 
@@ -140,13 +140,13 @@ module.exports = class Anser {
       let key = options.key = use_classes ? 'class' : 'color';
 
       let result = {
-          content: text,
-          fg: null,
-          bg: null,
-          fg_truecolor: null,
-          bg_truecolor: null,
-          was_processed: false,
-          isEmpty: function () {
+          content: text
+        , fg: null
+        , bg: null
+        , fg_truecolor: null
+        , bg_truecolor: null
+        , was_processed: false
+        , isEmpty: function () {
               return !this.content;
           }
       };
@@ -311,6 +311,7 @@ module.exports = class Anser {
           styles.push("color:rgb(" + jsonChunk.fg + ")");
         }
       }
+
       if (jsonChunk.bg) {
         if (use_classes) {
           classes.push(jsonChunk.bg + "-bg");
@@ -322,6 +323,7 @@ module.exports = class Anser {
           styles.push("background-color:rgb(" + jsonChunk.bg + ")");
         }
       }
+
       if (use_classes) {
         return '<span class="' + classes.join(' ') + '"' + render_data.call(self, data) + '>' + jsonChunk.content + '</span>';
       } else {
