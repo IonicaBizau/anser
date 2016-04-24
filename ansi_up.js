@@ -1,13 +1,6 @@
-// ansi_up.js
-// version : 1.3.0
-// author : Dru Nelson
-// license : MIT
-// http://github.com/drudru/ansi_up
-
-(function (Date, undefined) {
+"use strict";
 
     var ansi_up,
-        VERSION = "1.3.0",
 
         // check for nodeJS
         hasModule = (typeof module !== 'undefined'),
@@ -39,12 +32,32 @@
         // 256 Colors Palette
         PALETTE_COLORS;
 
-    function Ansi_Up() {
+module.exports = class Anser {
+    static escape_for_html (txt) {
+      return new Anser().escape_for_html(txt);
+    }
+    static linkify (txt) {
+      return new Anser().linkify(txt);
+    }
+    static ansi_to_html (txt, options) {
+      return new Anser().ansi_to_html(txt, options);
+    }
+    static ansi_to_json (txt, options) {
+      return new Anser().ansi_to_json(txt, options);
+    }
+    static ansi_to_text (txt) {
+      return new Anser().ansi_to_text(txt);
+    }
+    static ansi_to_html_obj () {
+      return new Anser();
+    }
+
+    constructor () {
       this.fg = this.bg = this.fg_truecolor = this.bg_truecolor = null;
       this.bright = 0;
     }
 
-    Ansi_Up.prototype.setup_palette = function() {
+    setup_palette () {
       PALETTE_COLORS = [];
       // Index 0..15 : System color
       (function() {
@@ -80,38 +93,37 @@
           PALETTE_COLORS.push(format.call(this, level));
         }
       })();
-    };
+    }
 
-    Ansi_Up.prototype.escape_for_html = function (txt) {
+    escape_for_html (txt) {
       return txt.replace(/[&<>]/gm, function(str) {
         if (str == "&") return "&amp;";
         if (str == "<") return "&lt;";
         if (str == ">") return "&gt;";
       });
-    };
+    }
 
-    Ansi_Up.prototype.linkify = function (txt) {
+    linkify (txt) {
       return txt.replace(/(https?:\/\/[^\s]+)/gm, function(str) {
         return "<a href=\"" + str + "\">" + str + "</a>";
       });
-    };
+    }
 
-    Ansi_Up.prototype.ansi_to_html = function (txt, options) {
+    ansi_to_html (txt, options) {
       return this.process(txt, options, true);
-    };
+    }
 
-    Ansi_Up.prototype.ansi_to_json = function (txt, options) {
+    ansi_to_json (txt, options) {
       options = options || {};
       options.json = true;
       return this.process(txt, options, true);
-    };
+    }
 
-    Ansi_Up.prototype.ansi_to_text = function (txt) {
-      var options = {};
-      return this.process(txt, options, false);
-    };
+    ansi_to_text (txt) {
+      return this.process(txt, {}, false);
+    }
 
-    Ansi_Up.prototype.process = function (txt, options, markup) {
+    process (txt, options, markup) {
       var self = this;
       var raw_text_chunks = txt.split(/\033\[/);
       var first_chunk = raw_text_chunks.shift(); // the first chunk is not the result of the split
@@ -135,9 +147,9 @@
       }
 
       return color_chunks.join('');
-    };
+    }
 
-    Ansi_Up.prototype.process_chunk_json = function (text, options, markup) {
+    process_chunk_json (text, options, markup) {
 
       // Are we using classes or styles?
       options = typeof options == 'undefined' ? {} : options;
@@ -280,9 +292,9 @@
 
         return result;
       }
-    };
+    }
 
-    Ansi_Up.prototype.process_chunk = function (text, options, markup) {
+    process_chunk (text, options, markup) {
 
       var self = this;
       options = options || {};
@@ -334,53 +346,5 @@
       } else {
         return '<span style="' + styles.join(';') + '"' + render_data.call(self, data) + '>' + jsonChunk.content + '</span>';
       }
-    };
-
-    // Module exports
-    ansi_up = {
-
-      escape_for_html: function (txt) {
-        var a2h = new Ansi_Up();
-        return a2h.escape_for_html(txt);
-      },
-
-      linkify: function (txt) {
-        var a2h = new Ansi_Up();
-        return a2h.linkify(txt);
-      },
-
-      ansi_to_html: function (txt, options) {
-        var a2h = new Ansi_Up();
-        return a2h.ansi_to_html(txt, options);
-      },
-
-      ansi_to_json: function (txt, options) {
-        var a2h = new Ansi_Up();
-        return a2h.ansi_to_json(txt, options);
-      },
-
-      ansi_to_text: function (txt) {
-        var a2h = new Ansi_Up();
-        return a2h.ansi_to_text(txt);
-      },
-
-      ansi_to_html_obj: function () {
-        return new Ansi_Up();
-      }
-    };
-
-    // CommonJS module is defined
-    if (hasModule) {
-        module.exports = ansi_up;
     }
-    /*global ender:false */
-    if (typeof window !== 'undefined' && typeof ender === 'undefined') {
-        window.ansi_up = ansi_up;
-    }
-    /*global define:false */
-    if (typeof define === "function" && define.amd) {
-        define("ansi_up", [], function () {
-            return ansi_up;
-        });
-    }
-})(Date);
+};
