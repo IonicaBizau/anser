@@ -1,11 +1,45 @@
-require(['ansi_up',"/examples/jquery-1.7.2.min.js"], function(a2h) {
+"use strict";
 
-  var txt  = "\n\n\033[1;33;40m 33;40  \033[1;33;41m 33;41  \033[1;33;42m 33;42  \033[1;33;43m 33;43  \033[1;33;44m 33;44  \033[1;33;45m 33;45  \033[1;33;46m 33;46  \033[1m\033[0\n\n\033[1;33;42m >> Tests OK\n\n"
+const Anser = require("../lib");
 
-  $(function () {
+let txt  = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
 
-    $("#console").html( a2h.ansi_to_html(txt) );
+console.log(Anser.ansiToHtml(txt));
+// <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
 
-  });
-
-});
+console.log(Anser.ansiToJson(txt));
+// [ { content: '',
+//     fg: null,
+//     bg: null,
+//     fg_truecolor: null,
+//     bg_truecolor: null,
+//     was_processed: false,
+//     isEmpty: [Function] },
+//   { content: 'Hello',
+//     fg: '255, 0, 0',
+//     bg: null,
+//     fg_truecolor: null,
+//     bg_truecolor: null,
+//     was_processed: true,
+//     isEmpty: [Function] },
+//   { content: ' ',
+//     fg: null,
+//     bg: null,
+//     fg_truecolor: null,
+//     bg_truecolor: null,
+//     was_processed: false,
+//     isEmpty: [Function] },
+//   { content: 'World',
+//     fg: null,
+//     bg: '255, 255, 0',
+//     fg_truecolor: null,
+//     bg_truecolor: null,
+//     was_processed: true,
+//     isEmpty: [Function] },
+//   { content: '',
+//     fg: null,
+//     bg: null,
+//     fg_truecolor: null,
+//     bg_truecolor: null,
+//     was_processed: false,
+//     isEmpty: [Function] } ]

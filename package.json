@@ -15,11 +15,8 @@
   "bugs": {
     "url": "http://github.com/IonicaBizau/anser/issues"
   },
-  "engines": {
-    "node": "*"
-  },
   "scripts": {
-    "test": "make test"
+    "test": "mocha"
   },
   "devDependencies": {
     "mocha": "*",
