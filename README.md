@@ -74,6 +74,7 @@ console.log(Anser.ansiToJson(txt));
 
 ## :memo: Documentation
 
+
 ### `Anser.escapeForHtml(txt)`
 Escape the input HTML.
 
@@ -251,6 +252,11 @@ Have an idea? Found a bug? See [how to contribute][contributing].
 ## :cake: Thanks
 This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:
 
+## :dizzy: Where is this library used?
+If you are using this library in one of your projects, add it in this list. :sparkles:
+
+
+ - [`ansi-to-json`](https://github.com/IonicaBizau/ansi-to-json#readme)—Convert ANSI strings into JSON output.
 
 ## :scroll: License
 

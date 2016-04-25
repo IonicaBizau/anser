@@ -1,6 +1,6 @@
 {
   "name": "anser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
@@ -47,5 +47,16 @@
     "thanks": "This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "bin/",
+    "app/",
+    "lib/",
+    "dist/",
+    "src/",
+    "resources/",
+    "menu/",
+    "cli.js",
+    "index.js"
+  ]
 }
