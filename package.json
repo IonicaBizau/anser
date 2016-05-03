@@ -18,6 +18,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
+    "pretest": "npm run build",
     "test": "mocha"
   },
   "devDependencies": {
