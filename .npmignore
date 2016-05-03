@@ -1,0 +1,8 @@
+*.swp
+*.swo
+*~
+*.log
+node_modules
+
+# We explicitly want lib/ on npm
+# lib/
