@@ -5,7 +5,7 @@
 
 > A low level parser for ANSI sequences.
 
-## Features
+## :rocket: Features
 
  - Converts text containing [ANSI color escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors) into equivalent HTML elements.
  - Allows converting the input into JSON output.
