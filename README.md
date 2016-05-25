@@ -259,6 +259,7 @@ If you are using this library in one of your projects, add it in this list. :spa
 
 
  - [`ansi-to-json`](https://github.com/IonicaBizau/ansi-to-json#readme)—Convert ANSI strings into JSON output.
+ - [`transformime`](https://github.com/nteract/transformime#readme) (by nteract)—Transforms MIMEtypes to HTML Elements
 
 ## :scroll: License
 
