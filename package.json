@@ -1,6 +1,6 @@
 {
   "name": "anser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
@@ -57,6 +57,7 @@
     "src/",
     "resources/",
     "menu/",
+    "scripts/",
     "cli.js",
     "index.js"
   ]
