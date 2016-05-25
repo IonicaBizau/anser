@@ -470,6 +470,39 @@ describe('Anser', function() {
         });
       });
     });
+
+    describe('transform text attributes', function() {
+      describe('default', function() {
+        it('underline', function() {
+          var start = "\033[4m" + "foo" + "\033[0m";
+          var expected = '<span style="text-decoration:underline">foo</span>';
+          var l = Anser.ansiToHtml(start);
+          l.should.eql(expected);
+        });
+        it('blink', function() {
+          var start = "\033[5m" + "foo" + "\033[0m";
+          var expected = '<span style="text-decoration:blink">foo</span>';
+          var l = Anser.ansiToHtml(start);
+          l.should.eql(expected);
+        });
+      });
+
+        describe('with classes', function() {
+          it('underline', function() {
+            var start = "\033[4m" + "foo" + "\033[0m";
+            var expected = '<span class="ansi-underline">foo</span>';
+            var l = Anser.ansiToHtml(start, {use_classes: true});
+            l.should.eql(expected);
+          });
+          it('blink', function() {
+            var start = "\033[5m" + "foo" + "\033[0m";
+            var expected = '<span class="ansi-blink">foo</span>';
+            var l = Anser.ansiToHtml(start, {use_classes: true});
+            l.should.eql(expected);
+          });
+        });
+    });
+
     describe('ignore unsupported CSI', function() {
       it('should correctly convert a string similar to CSI', function() {
         // https://github.com/drudru/Anser/pull/15
