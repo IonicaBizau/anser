@@ -7,7 +7,7 @@
     "html"
   ],
   "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/IonicaBizau/anser.git"
@@ -30,10 +30,9 @@
     "test": "test"
   },
   "blah": {
-    "main": "lib/index.js",
     "description": [
       {
-        "h2": "Features"
+        "h2": ":rocket: Features"
       },
       {
         "ul": [
