@@ -1,8 +1,8 @@
 "use strict";
 
-const Anser = require("../lib");
+var Anser = require("../lib");
 
-let txt  = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
+var txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
 
 console.log(Anser.ansiToHtml(txt));
 // <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
