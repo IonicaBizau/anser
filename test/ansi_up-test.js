@@ -361,7 +361,7 @@ describe('Anser', function() {
         var fg = 32;
         var start = "\033[" + attr + ";" + fg + "m " + attr + ";" + fg + " \033[0m";
 
-        var expected = "<span class=\"ansi-bright-green-fg\"> " + attr + ";" + fg + " </span>";
+        var expected = "<span class=\"ansi-bright-green-fg ansi-bright\"> " + attr + ";" + fg + " </span>";
 
         var l = Anser.ansiToHtml(start, {use_classes: true});
         l.should.eql(expected);
@@ -373,7 +373,7 @@ describe('Anser', function() {
         var bg = 42;
         var start = "\033[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \033[0m";
 
-        var expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg\"> " + attr + ";" + bg + ";" + fg + " </span>";
+        var expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg ansi-bright\"> " + attr + ";" + bg + ";" + fg + " </span>";
 
         var l = Anser.ansiToHtml(start, {use_classes: true});
         l.should.eql(expected);
@@ -436,14 +436,14 @@ describe('Anser', function() {
 
         it('combination of bold and palette', function() {
           var start = "\033[1;38;5;171m" + "foo" + "\033[0m";
-          var expected = '<span class="ansi-palette-171-fg">foo</span>';
+          var expected = '<span class="ansi-palette-171-fg ansi-bright">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('combination of palette and bold', function() {
           var start = "\033[38;5;171;1m" + "foo" + "\033[0m";
-          var expected = '<span class="ansi-palette-171-fg">foo</span>';
+          var expected = '<span class="ansi-palette-171-fg ansi-bright">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
