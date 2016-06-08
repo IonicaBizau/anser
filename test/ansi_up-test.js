@@ -485,6 +485,12 @@ describe('Anser', function() {
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
+        it('dim', function() {
+          var start = "\033[2m" + "foo" + "\033[0m";
+          var expected = '<span style="">foo</span>';
+          var l = Anser.ansiToHtml(start);
+          l.should.eql(expected);
+        });
       });
 
         describe('with classes', function() {
@@ -500,6 +506,12 @@ describe('Anser', function() {
             var l = Anser.ansiToHtml(start, {use_classes: true});
             l.should.eql(expected);
           });
+        it('dim', function() {
+          var start = "\033[2m" + "foo" + "\033[0m";
+          var expected = '<span class="ansi-dim">foo</span>';
+          var l = Anser.ansiToHtml(start, {use_classes: true});
+          l.should.eql(expected);
+        });
         });
     });
 
