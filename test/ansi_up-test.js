@@ -589,5 +589,29 @@ describe('Anser', function() {
       output[0].fg.should.eql("0, 187, 0");
       output[0].content.should.eql(" 32 ");
     });
+    it('should convert ansi with carriageReturn to json with positive clearLine flag', function() {
+      var attr = 0;
+      var fg = 32;
+      var start = "\033[" + fg + "m " + fg + " \033[0mfoo\r";
+      var output = Anser.ansiToJson(start, {
+          remove_empty: true
+      });
+      output[0].fg.should.eql("0, 187, 0");
+      output[0].content.should.eql(" 32 ");
+      output[0].clearLine.should.eql(true);
+      output[1].clearLine.should.eql(true);
+    });
+    it('should convert ansi without carriageReturn to json with negative clearLine flag', function() {
+      var attr = 0;
+      var fg = 32;
+      var start = "\033[" + fg + "m " + fg + " \033[0mfoo";
+      var output = Anser.ansiToJson(start, {
+          remove_empty: true
+      });
+      output[0].fg.should.eql("0, 187, 0");
+      output[0].content.should.eql(" 32 ");
+      output[0].clearLine.should.eql(false);
+      output[1].clearLine.should.eql(false);
+    });
   });
 });
