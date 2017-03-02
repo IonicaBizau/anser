@@ -155,6 +155,7 @@ Processes the current chunk into json output.
  - `bg` (String|null): The background color.
  - `fg_truecolor` (String|null): The foreground true color (if 16m color is enabled).
  - `bg_truecolor` (String|null): The background true color (if 16m color is enabled).
+ - `clearLine` (Boolean): `true` if a carriageReturn \r was fount at end of line.
  - `was_processed` (Bolean): `true` if the colors were processed, `false` otherwise.
  - `isEmpty` (Function): A function returning `true` if the content is empty, or `false` otherwise.
 

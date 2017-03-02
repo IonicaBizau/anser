@@ -3,5 +3,3 @@
 *~
 *.log
 node_modules
-.idea
-*.iml
