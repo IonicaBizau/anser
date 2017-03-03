@@ -26,9 +26,9 @@ $ npm i --save anser
 
 
 ```js
-var Anser = require("anser");
+const Anser = require("anser");
 
-var txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
+const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
 
 console.log(Anser.ansiToHtml(txt));
 // <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
@@ -42,36 +42,46 @@ console.log(Anser.ansiToJson(txt));
 //     bg: null,
 //     fg_truecolor: null,
 //     bg_truecolor: null,
+//     clearLine: undefined,
+//     decoration: null,
 //     was_processed: false,
-//     isEmpty: [Function] },
+//     isEmpty: [Function: isEmpty] },
 //   { content: 'Hello',
 //     fg: '255, 0, 0',
 //     bg: null,
 //     fg_truecolor: null,
 //     bg_truecolor: null,
+//     clearLine: false,
+//     decoration: null,
 //     was_processed: true,
-//     isEmpty: [Function] },
+//     isEmpty: [Function: isEmpty] },
 //   { content: ' ',
 //     fg: null,
 //     bg: null,
 //     fg_truecolor: null,
 //     bg_truecolor: null,
+//     clearLine: false,
+//     decoration: null,
 //     was_processed: false,
-//     isEmpty: [Function] },
+//     isEmpty: [Function: isEmpty] },
 //   { content: 'World',
 //     fg: null,
 //     bg: '255, 255, 0',
 //     fg_truecolor: null,
 //     bg_truecolor: null,
+//     clearLine: false,
+//     decoration: null,
 //     was_processed: true,
-//     isEmpty: [Function] },
+//     isEmpty: [Function: isEmpty] },
 //   { content: '',
 //     fg: null,
 //     bg: null,
 //     fg_truecolor: null,
 //     bg_truecolor: null,
+//     clearLine: false,
+//     decoration: null,
 //     was_processed: false,
-//     isEmpty: [Function] } ]
+//     isEmpty: [Function: isEmpty] } ]
 ```
 
 ## :memo: Documentation
