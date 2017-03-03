@@ -131,7 +131,7 @@ describe('Anser', function() {
       it('should transform a foreground to html', function() {
         var attr = 0;
         var fg = 32;
-        var start = "\033[" + fg + "m " + fg + " \033[0m";
+        var start = "\x1B[" + fg + "m " + fg + " \x1B[0m";
 
         var expected = "<span style=\"color:rgb(0, 187, 0)\"> " + fg + " </span>";
 
@@ -143,7 +143,7 @@ describe('Anser', function() {
       it('should transform a attr;foreground to html', function() {
         var attr = 0;
         var fg = 32;
-        var start = "\033[" + attr + ";" + fg + "m " + fg + "  \033[0m";
+        var start = "\x1B[" + attr + ";" + fg + "m " + fg + "  \x1B[0m";
 
         var expected = "<span style=\"color:rgb(0, 187, 0)\"> " + fg + "  </span>";
 
@@ -154,7 +154,7 @@ describe('Anser', function() {
       it('should transform an empty code to a normal/reset html', function() {
         var attr = 0;
         var fg = 32;
-        var start = "\033[" + attr + ";" + fg + "m " + fg + "  \033[m x";
+        var start = "\x1B[" + attr + ";" + fg + "m " + fg + "  \x1B[m x";
 
         var expected = "<span style=\"color:rgb(0, 187, 0)\"> " + fg + "  </span> x";
 
@@ -165,7 +165,7 @@ describe('Anser', function() {
       it('should transform a bold attr;foreground to html', function() {
         var attr = 1;
         var fg = 32;
-        var start = "\033[" + attr + ";" + fg + "m " + attr + ";" + fg + " \033[0m";
+        var start = "\x1B[" + attr + ";" + fg + "m " + attr + ";" + fg + " \x1B[0m";
 
         var expected = "<span style=\"color:rgb(0, 255, 0)\"> " + attr + ";" + fg + " </span>";
 
@@ -175,7 +175,7 @@ describe('Anser', function() {
 
       it('should transform a bold-foreground to html', function() {
         var fg = 92;
-        var start = "\033[" + fg + "m " + fg + " \033[0m";
+        var start = "\x1B[" + fg + "m " + fg + " \x1B[0m";
 
         var expected = "<span style=\"color:rgb(0, 255, 0)\"> " + fg + " </span>";
 
@@ -187,7 +187,7 @@ describe('Anser', function() {
         var attr = 1;
         var fg = 33;
         var bg = 42;
-        var start = "\033[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \033[0m";
+        var start = "\x1B[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \x1B[0m";
 
         var expected = "<span style=\"color:rgb(255, 255, 85);background-color:rgb(0, 187, 0)\"> " + attr + ";" + bg + ";" + fg + " </span>";
 
@@ -198,7 +198,7 @@ describe('Anser', function() {
       it('should transform a bold-background;foreground to html', function() {
         var fg = 33;
         var bg = 102;
-        var start = "\033[" + bg + ";" + fg + "m " + bg + ";" + fg + " \033[0m";
+        var start = "\x1B[" + bg + ";" + fg + "m " + bg + ";" + fg + " \x1B[0m";
 
         var expected = "<span style=\"color:rgb(187, 187, 0);background-color:rgb(0, 255, 0)\"> " + bg + ";" + fg + " </span>";
 
@@ -211,7 +211,7 @@ describe('Anser', function() {
         var attr = 1;
         var fg = 32;
         var bg = 42;
-        var start = "\n \033[" + fg + "m " + fg + "  \033[0m \n  \033[" + bg + "m " + bg + "  \033[0m \n zimpper ";
+        var start = "\n \x1B[" + fg + "m " + fg + "  \x1B[0m \n  \x1B[" + bg + "m " + bg + "  \x1B[0m \n zimpper ";
 
         var expected = "\n <span style=\"color:rgb(0, 187, 0)\"> " + fg + "  </span> \n  <span style=\"background-color:rgb(0, 187, 0)\"> " + bg + "  </span> \n zimpper ";
 
@@ -222,7 +222,7 @@ describe('Anser', function() {
       it('should transform a foreground and background and reset foreground to html', function() {
         var fg = 37;
         var bg = 42;
-        var start = "\n\033[40m \033[49m\033[" + fg + ";" + bg + "m " + bg + " \033[39m foobar ";
+        var start = "\n\x1B[40m \x1B[49m\x1B[" + fg + ";" + bg + "m " + bg + " \x1B[39m foobar ";
 
         var expected = "\n<span style=\"background-color:rgb(0, 0, 0)\"> </span><span style=\"color:rgb(255,255,255);background-color:rgb(0, 187, 0)\"> " + bg + " </span><span style=\"background-color:rgb(0, 187, 0)\"> foobar </span>";
 
@@ -233,7 +233,7 @@ describe('Anser', function() {
       it('should transform a foreground and background and reset background to html', function() {
         var fg = 37;
         var bg = 42;
-        var start = "\n\033[40m \033[49m\033[" + fg + ";" + bg + "m " + fg + " \033[49m foobar ";
+        var start = "\n\x1B[40m \x1B[49m\x1B[" + fg + ";" + bg + "m " + fg + " \x1B[49m foobar ";
 
         var expected = "\n<span style=\"background-color:rgb(0, 0, 0)\"> </span><span style=\"color:rgb(255,255,255);background-color:rgb(0, 187, 0)\"> " + fg + " </span><span style=\"color:rgb(255,255,255)\"> foobar </span>";
 
@@ -244,7 +244,7 @@ describe('Anser', function() {
       it('should transform a foreground and background and reset them to html', function() {
         var fg = 37;
         var bg = 42;
-        var start = "\n\033[40m \033[49m\033[" + fg + ";" + bg + "m " + fg + ';' + bg + " \033[39;49m foobar ";
+        var start = "\n\x1B[40m \x1B[49m\x1B[" + fg + ";" + bg + "m " + fg + ';' + bg + " \x1B[39;49m foobar ";
 
         var expected = "\n<span style=\"background-color:rgb(0, 0, 0)\"> </span><span style=\"color:rgb(255,255,255);background-color:rgb(0, 187, 0)\"> " + fg + ';' + bg + " </span> foobar ";
 
@@ -254,56 +254,56 @@ describe('Anser', function() {
 
       describe('transform extend colors (palette)', function() {
         it('system color, foreground', function() {
-          var start = "\033[38;5;1m" + "red" + "\033[0m";
+          var start = "\x1B[38;5;1m" + "red" + "\x1B[0m";
           var expected = '<span style="color:rgb(187, 0, 0)">red</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('system color, foreground (bright)', function() {
-          var start = "\033[38;5;9m" + "red" + "\033[0m";
+          var start = "\x1B[38;5;9m" + "red" + "\x1B[0m";
           var expected = '<span style="color:rgb(255, 85, 85)">red</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('system color, background', function() {
-          var start = "\033[48;5;1m" + "red" + "\033[0m";
+          var start = "\x1B[48;5;1m" + "red" + "\x1B[0m";
           var expected = '<span style="background-color:rgb(187, 0, 0)">red</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('system color, background (bright)', function() {
-          var start = "\033[48;5;9m" + "red" + "\033[0m";
+          var start = "\x1B[48;5;9m" + "red" + "\x1B[0m";
           var expected = '<span style="background-color:rgb(255, 85, 85)">red</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('palette, foreground', function() {
-          var start = "\033[38;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[38;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span style="color:rgb(215, 95, 255)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('palette, background', function() {
-          var start = "\033[48;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[48;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span style="background-color:rgb(215, 95, 255)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('combination of bold and palette', function() {
-          var start = "\033[1;38;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[1;38;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span style="color:rgb(215, 95, 255)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
 
         it('combination of palette and bold', function() {
-          var start = "\033[38;5;171;1m" + "foo" + "\033[0m";
+          var start = "\x1B[38;5;171;1m" + "foo" + "\x1B[0m";
           var expected = '<span style="color:rgb(215, 95, 255)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
@@ -312,19 +312,19 @@ describe('Anser', function() {
 
       describe('transform extend colors (true color)', function() {
         it('foreground', function() {
-          var start = "\033[38;2;42;142;242m" + "foo" + "\033[0m";
+          var start = "\x1B[38;2;42;142;242m" + "foo" + "\x1B[0m";
           var expected = '<span style="color:rgb(42, 142, 242)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
         it('background', function() {
-          var start = "\033[48;2;42;142;242m" + "foo" + "\033[0m";
+          var start = "\x1B[48;2;42;142;242m" + "foo" + "\x1B[0m";
           var expected = '<span style="background-color:rgb(42, 142, 242)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
         it('both foreground and background', function() {
-          var start = "\033[38;2;42;142;242;48;2;1;2;3m" + "foo" + "\033[0m";
+          var start = "\x1B[38;2;42;142;242;48;2;1;2;3m" + "foo" + "\x1B[0m";
           var expected = '<span style="color:rgb(42, 142, 242);background-color:rgb(1, 2, 3)">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
@@ -336,7 +336,7 @@ describe('Anser', function() {
       it('should transform a foreground to html', function() {
         var attr = 0;
         var fg = 32;
-        var start = "\033[" + fg + "m " + fg + " \033[0m";
+        var start = "\x1B[" + fg + "m " + fg + " \x1B[0m";
 
         var expected = "<span class=\"ansi-green-fg\"> " + fg + " </span>";
 
@@ -348,7 +348,7 @@ describe('Anser', function() {
       it('should transform a attr;foreground to html', function() {
         var attr = 0;
         var fg = 32;
-        var start = "\033[" + attr + ";" + fg + "m " + fg + "  \033[0m";
+        var start = "\x1B[" + attr + ";" + fg + "m " + fg + "  \x1B[0m";
 
         var expected = "<span class=\"ansi-green-fg\"> " + fg + "  </span>";
 
@@ -359,7 +359,7 @@ describe('Anser', function() {
       it('should transform a bold attr;foreground to html', function() {
         var attr = 1;
         var fg = 32;
-        var start = "\033[" + attr + ";" + fg + "m " + attr + ";" + fg + " \033[0m";
+        var start = "\x1B[" + attr + ";" + fg + "m " + attr + ";" + fg + " \x1B[0m";
 
         var expected = "<span class=\"ansi-bright-green-fg ansi-bright\"> " + attr + ";" + fg + " </span>";
 
@@ -371,7 +371,7 @@ describe('Anser', function() {
         var attr = 1;
         var fg = 33;
         var bg = 42;
-        var start = "\033[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \033[0m";
+        var start = "\x1B[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \x1B[0m";
 
         var expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg ansi-bright\"> " + attr + ";" + bg + ";" + fg + " </span>";
 
@@ -383,7 +383,7 @@ describe('Anser', function() {
         var attr = 1;
         var fg = 32;
         var bg = 42;
-        var start = "\n \033[" + fg + "m " + fg + "  \033[0m \n  \033[" + bg + "m " + bg + "  \033[0m \n zimpper ";
+        var start = "\n \x1B[" + fg + "m " + fg + "  \x1B[0m \n  \x1B[" + bg + "m " + bg + "  \x1B[0m \n zimpper ";
 
         var expected = "\n <span class=\"ansi-green-fg\"> " + fg + "  </span> \n  <span class=\"ansi-green-bg\"> " + bg + "  </span> \n zimpper ";
 
@@ -393,56 +393,56 @@ describe('Anser', function() {
 
       describe('transform extend colors (palette)', function() {
         it('system color, foreground', function() {
-          var start = "\033[38;5;1m" + "red" + "\033[0m";
+          var start = "\x1B[38;5;1m" + "red" + "\x1B[0m";
           var expected = '<span class="ansi-red-fg">red</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('system color, foreground (bright)', function() {
-          var start = "\033[38;5;9m" + "red" + "\033[0m";
+          var start = "\x1B[38;5;9m" + "red" + "\x1B[0m";
           var expected = '<span class="ansi-bright-red-fg">red</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('system color, background', function() {
-          var start = "\033[48;5;1m" + "red" + "\033[0m";
+          var start = "\x1B[48;5;1m" + "red" + "\x1B[0m";
           var expected = '<span class="ansi-red-bg">red</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('system color, background (bright)', function() {
-          var start = "\033[48;5;9m" + "red" + "\033[0m";
+          var start = "\x1B[48;5;9m" + "red" + "\x1B[0m";
           var expected = '<span class="ansi-bright-red-bg">red</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('palette, foreground', function() {
-          var start = "\033[38;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[38;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-palette-171-fg">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('palette, background', function() {
-          var start = "\033[48;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[48;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-palette-171-bg">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('combination of bold and palette', function() {
-          var start = "\033[1;38;5;171m" + "foo" + "\033[0m";
+          var start = "\x1B[1;38;5;171m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-palette-171-fg ansi-bright">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
 
         it('combination of palette and bold', function() {
-          var start = "\033[38;5;171;1m" + "foo" + "\033[0m";
+          var start = "\x1B[38;5;171;1m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-palette-171-fg ansi-bright">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
@@ -451,19 +451,19 @@ describe('Anser', function() {
 
       describe('transform extend colors (true color)', function() {
         it('foreground', function() {
-          var start = "\033[38;2;42;142;242m" + "foo" + "\033[0m";
+          var start = "\x1B[38;2;42;142;242m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-truecolor-fg" data-ansi-truecolor-fg="42, 142, 242">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
         it('background', function() {
-          var start = "\033[48;2;42;142;242m" + "foo" + "\033[0m";
+          var start = "\x1B[48;2;42;142;242m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-truecolor-bg" data-ansi-truecolor-bg="42, 142, 242">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
         });
         it('both foreground and background', function() {
-          var start = "\033[38;2;42;142;242;48;2;1;2;3m" + "foo" + "\033[0m";
+          var start = "\x1B[38;2;42;142;242;48;2;1;2;3m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-truecolor-fg ansi-truecolor-bg" data-ansi-truecolor-fg="42, 142, 242" data-ansi-truecolor-bg="1, 2, 3">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
@@ -474,19 +474,19 @@ describe('Anser', function() {
     describe('transform text attributes', function() {
       describe('default', function() {
         it('underline', function() {
-          var start = "\033[4m" + "foo" + "\033[0m";
+          var start = "\x1B[4m" + "foo" + "\x1B[0m";
           var expected = '<span style="text-decoration:underline">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
         it('blink', function() {
-          var start = "\033[5m" + "foo" + "\033[0m";
+          var start = "\x1B[5m" + "foo" + "\x1B[0m";
           var expected = '<span style="text-decoration:blink">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
         });
         it('dim', function() {
-          var start = "\033[2m" + "foo" + "\033[0m";
+          var start = "\x1B[2m" + "foo" + "\x1B[0m";
           var expected = '<span style="">foo</span>';
           var l = Anser.ansiToHtml(start);
           l.should.eql(expected);
@@ -495,19 +495,19 @@ describe('Anser', function() {
 
         describe('with classes', function() {
           it('underline', function() {
-            var start = "\033[4m" + "foo" + "\033[0m";
+            var start = "\x1B[4m" + "foo" + "\x1B[0m";
             var expected = '<span class="ansi-underline">foo</span>';
             var l = Anser.ansiToHtml(start, {use_classes: true});
             l.should.eql(expected);
           });
           it('blink', function() {
-            var start = "\033[5m" + "foo" + "\033[0m";
+            var start = "\x1B[5m" + "foo" + "\x1B[0m";
             var expected = '<span class="ansi-blink">foo</span>';
             var l = Anser.ansiToHtml(start, {use_classes: true});
             l.should.eql(expected);
           });
         it('dim', function() {
-          var start = "\033[2m" + "foo" + "\033[0m";
+          var start = "\x1B[2m" + "foo" + "\x1B[0m";
           var expected = '<span class="ansi-dim">foo</span>';
           var l = Anser.ansiToHtml(start, {use_classes: true});
           l.should.eql(expected);
@@ -519,7 +519,7 @@ describe('Anser', function() {
       it('should correctly convert a string similar to CSI', function() {
         // https://github.com/drudru/Anser/pull/15
         // "[1;31m" is a plain text. not an escape sequence.
-        var start = "foo\033[1@bar[1;31mbaz\033[0m";
+        var start = "foo\x1B[1@bar[1;31mbaz\x1B[0m";
         var l = Anser.ansiToHtml(start);
 
         // is all plain texts exist?
@@ -529,33 +529,33 @@ describe('Anser', function() {
         l.should.containEql('1;31m');
       });
       it('(italic)', function() {
-        var start = "foo\033[3mbar\033[0mbaz";
+        var start = "foo\x1B[3mbar\x1B[0mbaz";
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobarbaz');
       });
       it('(cursor-up)', function() {
-        var start = "foo\033[1Abar";
+        var start = "foo\x1B[1Abar";
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobar');
       });
       it('(scroll-left)', function() {
         // <ESC>[1 @ (including ascii space)
-        var start = "foo\033[1 @bar";
+        var start = "foo\x1B[1 @bar";
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobar');
       });
       it('(DECMC)', function() {
-        var start = "foo\033[?11ibar";
+        var start = "foo\x1B[?11ibar";
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobar');
       });
       it('(RLIMGCP)', function() {
-        var start = "foo\033[<!3ibar";
+        var start = "foo\x1B[<!3ibar";
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobar');
       });
       it('(DECSCL)', function() {
-        var start = "foo\033[61;0\"pbar"
+        var start = "foo\x1B[61;0\"pbar"
         var l = Anser.ansiToHtml(start);
         l.should.eql('foobar');
       });
@@ -563,17 +563,17 @@ describe('Anser', function() {
   });
   describe('ansi to text', function() {
     it('should remove color sequence', function() {
-      var start = "foo \033[1;32mbar\033[0m baz";
+      var start = "foo \x1B[1;32mbar\x1B[0m baz";
       var l = Anser.ansiToText(start);
       l.should.eql("foo bar baz");
     });
     it('should remove unsupported sequence', function() {
-      var start = "foo \033[1Abar";
+      var start = "foo \x1B[1Abar";
       var l = Anser.ansiToText(start);
       l.should.eql('foo bar');
     });
     it('should keep multiline', function() {
-      var start = "foo \033[1;32mbar\nbaz\033[0m qux";
+      var start = "foo \x1B[1;32mbar\nbaz\x1B[0m qux";
       var l = Anser.ansiToText(start);
       l.should.eql("foo bar\nbaz qux");
     });
@@ -582,7 +582,7 @@ describe('Anser', function() {
     it('should convert ansi to json', function() {
       var attr = 0;
       var fg = 32;
-      var start = "\033[" + fg + "m " + fg + " \033[0m";
+      var start = "\x1B[" + fg + "m " + fg + " \x1B[0m";
       var output = Anser.ansiToJson(start, {
           remove_empty: true
       });
@@ -592,7 +592,7 @@ describe('Anser', function() {
     it('should convert ansi with carriageReturn to json with positive clearLine flag', function() {
       var attr = 0;
       var fg = 32;
-      var start = "\033[" + fg + "m " + fg + " \033[0mfoo\r";
+      var start = "\x1B[" + fg + "m " + fg + " \x1B[0mfoo\r";
       var output = Anser.ansiToJson(start, {
           remove_empty: true
       });
@@ -604,7 +604,7 @@ describe('Anser', function() {
     it('should convert ansi without carriageReturn to json with negative clearLine flag', function() {
       var attr = 0;
       var fg = 32;
-      var start = "\033[" + fg + "m " + fg + " \033[0mfoo";
+      var start = "\x1B[" + fg + "m " + fg + " \x1B[0mfoo";
       var output = Anser.ansiToJson(start, {
           remove_empty: true
       });
