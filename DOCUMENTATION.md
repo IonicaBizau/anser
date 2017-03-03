@@ -8,7 +8,6 @@ Escape the input HTML.
 This does the minimum escaping of text to make it compliant with HTML.
 In particular, the '&','<', and '>' characters are escaped. This should
 be run prior to `ansiToHtml`.
-
 #### Params
 - **String** `txt`: The input text (containing the ANSI snippets).
 
@@ -22,7 +21,6 @@ This replaces any links in the text with anchor tags that display the
 link. The links should have at least one whitespace character
 surrounding it. Also, you should apply this after you have run
 `ansiToHtml` on the text.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -45,7 +43,6 @@ This will instead set classes on the spans so the colors can be set via
 CSS. The class names used are of the format `ansi-*-fg/bg` and
 `ansi-bright-*-fg/bg` where `*` is the color name,
 i.e black/red/green/yellow/blue/magenta/cyan/white.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
@@ -55,7 +52,6 @@ i.e black/red/green/yellow/blue/magenta/cyan/white.
 
 ### `Anser.ansiToJson(txt, options)`
 Converts ANSI input into JSON output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
@@ -65,7 +61,6 @@ Converts ANSI input into JSON output.
 
 ### `Anser.ansiToText(txt)`
 Converts ANSI input into text output.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -83,7 +78,6 @@ Sets up the palette.
 
 ### `escapeForHtml(txt)`
 Escapes the input text.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -92,7 +86,6 @@ Escapes the input text.
 
 ### `linkify(txt)`
 Adds HTML link elements.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -101,7 +94,6 @@ Adds HTML link elements.
 
 ### `ansiToHtml(txt, options)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
@@ -111,7 +103,6 @@ Converts ANSI input into HTML output.
 
 ### `ansiToJson(txt, options)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
@@ -121,7 +112,6 @@ Converts ANSI input into HTML output.
 
 ### `ansiToText(txt)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -130,7 +120,6 @@ Converts ANSI input into HTML output.
 
 ### `process(txt, options, markup)`
 Processes the input.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: An object passed to `processChunk` method, extended with:
@@ -140,7 +129,6 @@ Processes the input.
 
 ### `processChunkJson(text, options, markup)`
 Processes the current chunk into json output.
-
 #### Params
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:
@@ -161,7 +149,6 @@ Processes the current chunk into json output.
 
 ### `processChunk(text, options, markup)`
 Processes the current chunk of text.
-
 #### Params
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:

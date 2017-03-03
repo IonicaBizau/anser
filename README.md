@@ -1,7 +1,7 @@
 
 # anser
 
- [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![AMA](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Travis](https://img.shields.io/travis/IonicaBizau/anser.svg)](https://travis-ci.org/IonicaBizau/anser/) [![Version](https://img.shields.io/npm/v/anser.svg)](https://www.npmjs.com/package/anser) [![Downloads](https://img.shields.io/npm/dt/anser.svg)](https://www.npmjs.com/package/anser) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
+ [![Patreon](https://img.shields.io/badge/Support%20me%20on-Patreon-%23e6461a.svg)][patreon] [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![AMA](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Travis](https://img.shields.io/travis/IonicaBizau/anser.svg)](https://travis-ci.org/IonicaBizau/anser/) [![Version](https://img.shields.io/npm/v/anser.svg)](https://www.npmjs.com/package/anser) [![Downloads](https://img.shields.io/npm/dt/anser.svg)](https://www.npmjs.com/package/anser) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
 
 > A low level parser for ANSI sequences.
 
@@ -83,7 +83,6 @@ Escape the input HTML.
 This does the minimum escaping of text to make it compliant with HTML.
 In particular, the '&','<', and '>' characters are escaped. This should
 be run prior to `ansiToHtml`.
-
 #### Params
 - **String** `txt`: The input text (containing the ANSI snippets).
 
@@ -97,7 +96,6 @@ This replaces any links in the text with anchor tags that display the
 link. The links should have at least one whitespace character
 surrounding it. Also, you should apply this after you have run
 `ansiToHtml` on the text.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -120,7 +118,6 @@ This will instead set classes on the spans so the colors can be set via
 CSS. The class names used are of the format `ansi-*-fg/bg` and
 `ansi-bright-*-fg/bg` where `*` is the color name,
 i.e black/red/green/yellow/blue/magenta/cyan/white.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
@@ -130,7 +127,6 @@ i.e black/red/green/yellow/blue/magenta/cyan/white.
 
 ### `Anser.ansiToJson(txt, options)`
 Converts ANSI input into JSON output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
@@ -140,7 +136,6 @@ Converts ANSI input into JSON output.
 
 ### `Anser.ansiToText(txt)`
 Converts ANSI input into text output.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -158,7 +153,6 @@ Sets up the palette.
 
 ### `escapeForHtml(txt)`
 Escapes the input text.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -167,7 +161,6 @@ Escapes the input text.
 
 ### `linkify(txt)`
 Adds HTML link elements.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -176,7 +169,6 @@ Adds HTML link elements.
 
 ### `ansiToHtml(txt, options)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
@@ -186,7 +178,6 @@ Converts ANSI input into HTML output.
 
 ### `ansiToJson(txt, options)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
@@ -196,7 +187,6 @@ Converts ANSI input into HTML output.
 
 ### `ansiToText(txt)`
 Converts ANSI input into HTML output.
-
 #### Params
 - **String** `txt`: The input text.
 
@@ -205,7 +195,6 @@ Converts ANSI input into HTML output.
 
 ### `process(txt, options, markup)`
 Processes the input.
-
 #### Params
 - **String** `txt`: The input text.
 - **Object** `options`: An object passed to `processChunk` method, extended with:
@@ -215,7 +204,6 @@ Processes the input.
 
 ### `processChunkJson(text, options, markup)`
 Processes the current chunk into json output.
-
 #### Params
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:
@@ -236,7 +224,6 @@ Processes the current chunk into json output.
 
 ### `processChunk(text, options, markup)`
 Processes the current chunk of text.
-
 #### Params
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:
@@ -251,6 +238,16 @@ Processes the current chunk of text.
 
 ## :yum: How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
+
+
+## :moneybag: Donations
+
+Another way to support the development of my open-source modules is
+to [set up a recurring donation, via Patreon][patreon]. :rocket:
+
+[PayPal donations][paypal-donations] are appreciated too! Each dollar helps.
+
+Thanks! :heart:
 
 ## :cake: Thanks
 This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:
@@ -271,6 +268,7 @@ If you are using this library in one of your projects, add it in this list. :spa
 
 [MIT][license] © [Ionică Bizău][website]
 
+[patreon]: https://www.patreon.com/ionicabizau
 [paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVXDDLKKLQRJW
 [donate-now]: http://i.imgur.com/6cMbHOC.png
 
