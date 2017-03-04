@@ -536,5 +536,12 @@ describe("Anser", () => {
             output[0].clearLine.should.eql(false);
             output[1].clearLine.should.eql(false);
         });
+        it("should convert ansi with carriageReturn at start of line to json with positive clearLine", () => {
+            const start = "\r  zc = 9  zm = 9  zs = 3  f = 4";
+            const output = Anser.ansiToJson(start, {
+                remove_empty: true
+            });
+            output[0].clearLine.should.eql(true);
+        });
     });
 });
