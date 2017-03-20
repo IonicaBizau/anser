@@ -1,12 +1,12 @@
 {
   "name": "anser",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
     "html"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -52,12 +52,11 @@
     "bin/",
     "app/",
     "lib/",
-    "build/",
     "dist/",
     "src/",
+    "scripts/",
     "resources/",
     "menu/",
-    "scripts/",
     "cli.js",
     "index.js"
   ]
