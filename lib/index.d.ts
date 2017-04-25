@@ -9,7 +9,7 @@ interface JsonEntry {
     isEmpty(): boolean;
 }
 
-export = Anser
+export = Anser;
 declare class Anser {
 
 
