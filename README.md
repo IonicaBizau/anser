@@ -84,12 +84,15 @@ console.log(Anser.ansiToJson(txt));
 //     isEmpty: [Function: isEmpty] } ]
 ```
 
-Typescript
+When using **Typescript** you can do the following
 
 ```ts
-import Anser from 'anser';
-// OR
-import { ansiToJson } from 'anser';
+import Anser from 'anser'; // make sure to NOT use curly braces!
+
+const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
+
+console.log(Anser.ansiToHtml(txt));
+// <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
 ```
 
 ## :question: Get Help
