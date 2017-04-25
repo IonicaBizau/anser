@@ -1,3 +1,6 @@
+// Type definitions for Anser
+// Project: https://github.com/IonicaBizau/anser
+
 export interface AnserJsonEntry {
   content: string;
   fg: string;
