@@ -84,6 +84,14 @@ console.log(Anser.ansiToJson(txt));
 //     isEmpty: [Function: isEmpty] } ]
 ```
 
+Typescript
+
+```ts
+import Anser from 'anser';
+// OR
+import { ansiToJson } from 'anser';
+```
+
 ## :question: Get Help
 
 There are few ways to get help:
