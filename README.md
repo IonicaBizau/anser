@@ -84,6 +84,16 @@ console.log(Anser.ansiToJson(txt));
 //     isEmpty: [Function: isEmpty] } ]
 ```
 
+
+When using **Typescript** you can do the following
+```ts
+import Anser from 'anser'; // make sure to NOT use curly braces!
+const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
+console.log(Anser.ansiToHtml(txt));
+// <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
+```
+
+
 ## :question: Get Help
 
 There are few ways to get help:
@@ -300,13 +310,17 @@ If you are using this library in one of your projects, add it in this list. :spa
  - [`ansi-to-json`](https://github.com/IonicaBizau/ansi-to-json#readme)—Convert ANSI strings into JSON output.
  - [`ansi-to-react`](https://github.com/nteract/ansi-to-react#readme) (by Kyle Kelley)—ANSI to React Elements
  - [`ansi-to-react-with-classes`](https://npmjs.com/package/ansi-to-react-with-classes) (by Kyle Kelley)—ANSI to React Elements
+ - [`cycle-dev-utils`](https://github.com/cyclejs-community/create-cycle-app#readme) (by Nick Balestra)—undefined
  - [`inferno-dev-utils`](https://github.com/infernojs/create-inferno-app#readme)—Webpack utilities used by Create Inferno App
+ - [`lambda-dev-utils`](https://github.com/channl/create-lambda-app#readme)—Webpack utilities used by Create Lambda App
  - [`nterm`](https://github.com/dariushuntly/nterm/issues) (by Darius Huntly)—A Node Terminal
  - [`react-dev-utils-extra`](https://github.com/facebookincubator/create-react-app-extra#readme)—Webpack utilities used by Create React App
+ - [`react-dev-utils-sebfl-update`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
  - [`singularityui-tailer`](https://github.com/HubSpot/Singularity#readme) (by Danny Wolf)—A robust log tailer
  - [`stack-frame-overlay`](https://npmjs.com/package/stack-frame-overlay) (by Joe Haddad)—An overlay for displaying stack frames.
  - [`timer-react-dev-utils`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
  - [`transformime`](https://github.com/nteract/transformime#readme) (by nteract)—Transforms MIMEtypes to HTML Elements
+ - [`uyun-react-dev-utils`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
 
 ## :scroll: License
 

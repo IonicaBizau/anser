@@ -44,6 +44,20 @@
         ]
       }
     ],
+      "example": [
+        "When using **Typescript** you can do the following:",
+        {
+            "code": {
+                "content": [
+                    "import Anser from 'anser'; // make sure to NOT use curly braces!",
+                    "const txt = \"\\u001b[38;5;196mHello\\u001b[39m \\u001b[48;5;226mWorld\\u001b[49m\";",
+                    "console.log(Anser.ansiToHtml(txt));",
+                    "// <span style=\"color:rgb(255, 0, 0)\">Hello</span> <span style=\"background-color:rgb(255, 255, 0)\">World</span>"
+                ],
+                "language": "ts"
+            }
+        }
+      ],
     "thanks": "This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:"
   },
   "license": "MIT",
