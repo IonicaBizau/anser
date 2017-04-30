@@ -85,7 +85,7 @@ console.log(Anser.ansiToJson(txt));
 ```
 
 
-When using **Typescript** you can do the following
+When using **Typescript** you can do the following:
 ```ts
 import Anser from 'anser'; // make sure to NOT use curly braces!
 const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
