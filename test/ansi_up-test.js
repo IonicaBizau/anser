@@ -287,7 +287,7 @@ describe("Anser", () => {
                 const attr = 1;
                 const fg = 32;
                 const start = "\x1B[" + attr + ";" + fg + "m " + attr + ";" + fg + " \x1B[0m";
-                const expected = "<span class=\"ansi-bright-green-fg ansi-bold\"> " + attr + ";" + fg + " </span>";
+                const expected = "<span class=\"ansi-bright-green-fg ansi-bright\"> " + attr + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start, {use_classes: true});
                 l.should.eql(expected);
             });
@@ -297,7 +297,7 @@ describe("Anser", () => {
                 const fg = 33;
                 const bg = 42;
                 const start = "\x1B[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \x1B[0m";
-                const expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg ansi-bold\"> " + attr + ";" + bg + ";" + fg + " </span>";
+                const expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg ansi-bright\"> " + attr + ";" + bg + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start, {use_classes: true});
                 l.should.eql(expected);
             });
@@ -357,14 +357,14 @@ describe("Anser", () => {
 
                 it("combination of bold and palette", () => {
                     const start = "\x1B[1;38;5;171m" + "foo" + "\x1B[0m";
-                    const expected = "<span class=\"ansi-palette-171-fg ansi-bold\">foo</span>";
+                    const expected = "<span class=\"ansi-palette-171-fg ansi-bright\">foo</span>";
                     const l = Anser.ansiToHtml(start, {use_classes: true});
                     l.should.eql(expected);
                 });
 
                 it("combination of palette and bold", () => {
                     const start = "\x1B[38;5;171;1m" + "foo" + "\x1B[0m";
-                    const expected = "<span class=\"ansi-palette-171-fg ansi-bold\">foo</span>";
+                    const expected = "<span class=\"ansi-palette-171-fg ansi-bright\">foo</span>";
                     const l = Anser.ansiToHtml(start, {use_classes: true});
                     l.should.eql(expected);
                 });
