@@ -100,7 +100,7 @@ There are few ways to get help:
 
  1. Please [post questions on Stack Overflow](https://stackoverflow.com/questions/ask). You can open issues with questions, as long you add a link to your Stack Overflow question.
  2. For bug reports and feature requests, open issues. :bug:
- 3. For direct and quick help from me, you can [use Codementor](https://www.codementor.io/johnnyb). :rocket:
+ 3. For direct and quick help, you can [use Codementor](https://www.codementor.io/johnnyb). :rocket:
 
 
 ## :memo: Documentation
@@ -314,13 +314,16 @@ If you are using this library in one of your projects, add it in this list. :spa
  - [`inferno-dev-utils`](https://github.com/infernojs/create-inferno-app#readme)—Webpack utilities used by Create Inferno App
  - [`lambda-dev-utils`](https://github.com/channl/create-lambda-app#readme)—Webpack utilities used by Create Lambda App
  - [`nterm`](https://github.com/dariushuntly/nterm/issues) (by Darius Huntly)—A Node Terminal
+ - [`react-dev-utils`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
  - [`react-dev-utils-extra`](https://github.com/facebookincubator/create-react-app-extra#readme)—Webpack utilities used by Create React App
  - [`react-dev-utils-sebfl-update`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
+ - [`react-error-overlay`](https://github.com/facebookincubator/create-react-app#readme) (by Joe Haddad)—An overlay for displaying stack frames.
  - [`singularityui-tailer`](https://github.com/HubSpot/Singularity#readme) (by Danny Wolf)—A robust log tailer
  - [`stack-frame-overlay`](https://npmjs.com/package/stack-frame-overlay) (by Joe Haddad)—An overlay for displaying stack frames.
  - [`timer-react-dev-utils`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
  - [`transformime`](https://github.com/nteract/transformime#readme) (by nteract)—Transforms MIMEtypes to HTML Elements
  - [`uyun-react-dev-utils`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
+ - [`webpack-isomorphic-dev-middleware`](https://github.com/moxystudio/webpack-isomorphic-dev-middleware) (by André Cruz)—The webpack-dev-middleware, but for isomorphic applications.
 
 ## :scroll: License
 
