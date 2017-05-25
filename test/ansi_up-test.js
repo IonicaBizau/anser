@@ -127,11 +127,11 @@ describe("Anser", () => {
                 const attr = 1;
                 const fg = 32;
                 const start = "\x1B[" + attr + ";" + fg + "m " + attr + ";" + fg + " \x1B[0m";
-                const expected = "<span style=\"color:rgb(0, 255, 0);text-decoration:bold\"> " + attr + ";" + fg + " </span>";
+                const expected = "<span style=\"color:rgb(0, 187, 0);font-weight:bold\"> " + attr + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start);
                 l.should.eql(expected);
             });
-            it("should transform a bold-foreground to html", () => {
+            it("should transform a bright-foreground to html", () => {
                 const fg = 92;
                 const start = "\x1B[" + fg + "m " + fg + " \x1B[0m";
                 const expected = "<span style=\"color:rgb(0, 255, 0)\"> " + fg + " </span>";
@@ -143,11 +143,11 @@ describe("Anser", () => {
                 const fg = 33;
                 const bg = 42;
                 const start = "\x1B[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \x1B[0m";
-                const expected = "<span style=\"color:rgb(255, 255, 85);background-color:rgb(0, 187, 0);text-decoration:bold\"> " + attr + ";" + bg + ";" + fg + " </span>";
+                const expected = "<span style=\"color:rgb(187, 187, 0);background-color:rgb(0, 187, 0);font-weight:bold\"> " + attr + ";" + bg + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start);
                 l.should.eql(expected);
             });
-            it("should transform a bold-background;foreground to html", () => {
+            it("should transform a bright-background;foreground to html", () => {
                 const fg = 33;
                 const bg = 102;
                 const start = "\x1B[" + bg + ";" + fg + "m " + bg + ";" + fg + " \x1B[0m";
@@ -227,13 +227,13 @@ describe("Anser", () => {
                 });
                 it("combination of bold and palette", () => {
                     const start = "\x1B[1;38;5;171m" + "foo" + "\x1B[0m";
-                    const expected = "<span style=\"color:rgb(215, 95, 255);text-decoration:bold\">foo</span>";
+                    const expected = "<span style=\"color:rgb(215, 95, 255);font-weight:bold\">foo</span>";
                     const l = Anser.ansiToHtml(start);
                     l.should.eql(expected);
                 });
                 it("combination of palette and bold", () => {
                     const start = "\x1B[38;5;171;1m" + "foo" + "\x1B[0m";
-                    const expected = "<span style=\"color:rgb(215, 95, 255);text-decoration:bold\">foo</span>";
+                    const expected = "<span style=\"color:rgb(215, 95, 255);font-weight:bold\">foo</span>";
                     const l = Anser.ansiToHtml(start);
                     l.should.eql(expected);
                 });
@@ -287,7 +287,7 @@ describe("Anser", () => {
                 const attr = 1;
                 const fg = 32;
                 const start = "\x1B[" + attr + ";" + fg + "m " + attr + ";" + fg + " \x1B[0m";
-                const expected = "<span class=\"ansi-bright-green-fg ansi-bright\"> " + attr + ";" + fg + " </span>";
+                const expected = "<span class=\"ansi-green-fg ansi-bold\"> " + attr + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start, {use_classes: true});
                 l.should.eql(expected);
             });
@@ -297,7 +297,7 @@ describe("Anser", () => {
                 const fg = 33;
                 const bg = 42;
                 const start = "\x1B[" + attr + ";" + bg + ";" + fg + "m " + attr + ";" + bg + ";" + fg + " \x1B[0m";
-                const expected = "<span class=\"ansi-bright-yellow-fg ansi-green-bg ansi-bright\"> " + attr + ";" + bg + ";" + fg + " </span>";
+                const expected = "<span class=\"ansi-yellow-fg ansi-green-bg ansi-bold\"> " + attr + ";" + bg + ";" + fg + " </span>";
                 const l = Anser.ansiToHtml(start, {use_classes: true});
                 l.should.eql(expected);
             });
@@ -357,14 +357,14 @@ describe("Anser", () => {
 
                 it("combination of bold and palette", () => {
                     const start = "\x1B[1;38;5;171m" + "foo" + "\x1B[0m";
-                    const expected = "<span class=\"ansi-palette-171-fg ansi-bright\">foo</span>";
+                    const expected = "<span class=\"ansi-palette-171-fg ansi-bold\">foo</span>";
                     const l = Anser.ansiToHtml(start, {use_classes: true});
                     l.should.eql(expected);
                 });
 
                 it("combination of palette and bold", () => {
                     const start = "\x1B[38;5;171;1m" + "foo" + "\x1B[0m";
-                    const expected = "<span class=\"ansi-palette-171-fg ansi-bright\">foo</span>";
+                    const expected = "<span class=\"ansi-palette-171-fg ansi-bold\">foo</span>";
                     const l = Anser.ansiToHtml(start, {use_classes: true});
                     l.should.eql(expected);
                 });
@@ -452,7 +452,7 @@ describe("Anser", () => {
             it("(italic)", () => {
                 const start = "foo\x1B[3mbar\x1B[0mbaz";
                 const l = Anser.ansiToHtml(start);
-                l.should.eql("foo<span style=\"text-decoration:italic\">bar</span>baz");
+                l.should.eql("foo<span style=\"font-style:italic\">bar</span>baz");
             });
             it("(cursor-up)", () => {
                 const start = "foo\x1B[1Abar";
