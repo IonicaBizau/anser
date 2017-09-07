@@ -1,6 +1,6 @@
 {
   "name": "anser",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
@@ -73,6 +73,9 @@
     "resources/",
     "menu/",
     "cli.js",
-    "index.js"
+    "index.js",
+    "bloggify.js",
+    "bloggify.json",
+    "bloggify/"
   ]
 }
