@@ -9,7 +9,6 @@
 
 ## :rocket: Features
 
-
  - Converts text containing [ANSI color escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors) into equivalent HTML elements.
  - Allows converting the input into JSON output.
  - HTML escaping
@@ -95,7 +94,6 @@ const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
 console.log(Anser.ansiToHtml(txt));
 // <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
 ```
-
 
 
 ## :question: Get Help
