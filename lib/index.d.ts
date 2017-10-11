@@ -16,15 +16,12 @@ export interface AnserOptions {
   use_classes?: boolean;
 }
 
-export default class Anser {
-  static ansiToJson(txt: string, options?: AnserOptions): AnserJsonEntry[];
+export function ansiToJson(txt: string, options?: AnserOptions): AnserJsonEntry[];
 
-  static ansiToHtml(txt: string, options?: AnserOptions): string;
+export function ansiToHtml(txt: string, options?: AnserOptions): string;
 
-  static ansiToText(txt: string, options?: AnserOptions): string;
+export function ansiToText(txt: string, options?: AnserOptions): string;
 
-  static escapeForHtml(txt: string): string;
+export function escapeForHtml(txt: string): string;
 
-  static linkify(txt: string): string;
-
-}
+export function linkify(txt: string): string;
