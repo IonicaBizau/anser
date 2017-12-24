@@ -20,7 +20,11 @@
 ## :cloud: Installation
 
 ```sh
-$ npm i --save anser
+# Using npm
+npm install --save anser
+
+# Using yarn
+yarn add anser
 ```
 
 
