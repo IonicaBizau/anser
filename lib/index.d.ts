@@ -13,6 +13,7 @@ export interface AnserJsonEntry {
 }
 
 export interface AnserOptions {
+  json?: boolean;
   use_classes?: boolean;
 }
 
