@@ -8,6 +8,7 @@ export interface AnserJsonEntry {
   fg_truecolor: string;
   bg_truecolor: string;
   clearLine: boolean;
+  decoration: null | 'bold' | 'dim' | 'italic' | 'underline' | 'blink' | 'reverse' | 'hidden' | 'strikethrough';
   was_processed: boolean;
   isEmpty(): boolean;
 }
