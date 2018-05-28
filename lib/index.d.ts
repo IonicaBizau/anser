@@ -13,7 +13,9 @@ export interface AnserJsonEntry {
 }
 
 export interface AnserOptions {
+  json?: boolean;
   use_classes?: boolean;
+  remove_empty?: boolean;
 }
 
 export function ansiToJson(txt: string, options?: AnserOptions): AnserJsonEntry[];
