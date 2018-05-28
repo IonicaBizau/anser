@@ -1,6 +1,6 @@
 {
   "name": "anser",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "A low level parser for ANSI sequences.",
   "keywords": [
     "ansi",
