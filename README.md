@@ -340,10 +340,14 @@ If you are using this library in one of your projects, add it in this list. :spa
  - [`cycle-dev-utils`](https://github.com/cyclejs-community/create-cycle-app#readme) (by Nick Balestra)—undefined
  - [`kunai`](https://github.com/cpprefjp/kunai) (by Nana Sakisaka)—cpprefjp / boostjp frontend
  - [`lambda-dev-utils`](https://github.com/channl/create-lambda-app#readme)—Webpack utilities used by Create Lambda App
- - [`nteract-on-jupyter`](https://npmjs.com/package/nteract-on-jupyter) (by Kyle Kelley)—nteract on jupyter, as an extension
+ - [`mesh-devtool`](https://npmjs.com/package/mesh-devtool)—
  - [`nterm`](https://github.com/dariushuntly/nterm/issues) (by Darius Huntly)—A Node Terminal
+ - [`nuclide`](https://nuclide.io/)—A unified developer experience for web and mobile development, built as a suite of features on top of Atom to provide hackability and the support of an active community.
+ - [`nuclide-commons-ui`](https://nuclide.io/) (by Nuclide: Core UI)—Common Nuclide UI components.
+ - [`react-dev-utils-custom-hmr`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
  - [`react-dev-utils-extra`](https://github.com/facebookincubator/create-react-app-extra#readme)—Webpack utilities used by Create React App
  - [`react-dev-utils-sebfl-update`](https://github.com/facebookincubator/create-react-app#readme)—Webpack utilities used by Create React App
+ - [`react-error-guard`](https://github.com/WebCloud/react-error-guard#readme) (by Vinicius)—An overlay for displaying stack frames based on create-react-app/packages/react-error-overlay
  - [`react-error-overlay-canary`](https://github.com/facebookincubator/create-react-app#readme) (by Joe Haddad)—An overlay for displaying stack frames.
  - [`react-error-overlay-dangerous`](https://github.com/facebookincubator/create-react-app#readme) (by Joe Haddad)—An overlay for displaying stack frames.
  - [`singularityui-tailer`](https://github.com/HubSpot/Singularity#readme) (by Danny Wolf)—A robust log tailer
