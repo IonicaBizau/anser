@@ -10,7 +10,6 @@ In particular, the '&','<', and '>' characters are escaped. This should
 be run prior to `ansiToHtml`.
 
 #### Params
-
 - **String** `txt`: The input text (containing the ANSI snippets).
 
 #### Return
@@ -25,7 +24,6 @@ surrounding it. Also, you should apply this after you have run
 `ansiToHtml` on the text.
 
 #### Params
-
 - **String** `txt`: The input text.
 
 #### Return
@@ -49,7 +47,6 @@ CSS. The class names used are of the format `ansi-*-fg/bg` and
 i.e black/red/green/yellow/blue/magenta/cyan/white.
 
 #### Params
-
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
 
@@ -60,7 +57,6 @@ i.e black/red/green/yellow/blue/magenta/cyan/white.
 Converts ANSI input into JSON output.
 
 #### Params
-
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed to the ansiToHTML method.
 
@@ -71,7 +67,6 @@ Converts ANSI input into JSON output.
 Converts ANSI input into text output.
 
 #### Params
-
 - **String** `txt`: The input text.
 
 #### Return
@@ -90,7 +85,6 @@ Sets up the palette.
 Escapes the input text.
 
 #### Params
-
 - **String** `txt`: The input text.
 
 #### Return
@@ -100,7 +94,6 @@ Escapes the input text.
 Adds HTML link elements.
 
 #### Params
-
 - **String** `txt`: The input text.
 
 #### Return
@@ -110,7 +103,6 @@ Adds HTML link elements.
 Converts ANSI input into HTML output.
 
 #### Params
-
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
 
@@ -121,7 +113,6 @@ Converts ANSI input into HTML output.
 Converts ANSI input into HTML output.
 
 #### Params
-
 - **String** `txt`: The input text.
 - **Object** `options`: The options passed ot the `process` method.
 
@@ -132,7 +123,6 @@ Converts ANSI input into HTML output.
 Converts ANSI input into HTML output.
 
 #### Params
-
 - **String** `txt`: The input text.
 
 #### Return
@@ -142,7 +132,6 @@ Converts ANSI input into HTML output.
 Processes the input.
 
 #### Params
-
 - **String** `txt`: The input text.
 - **Object** `options`: An object passed to `processChunk` method, extended with:
  - `json` (Boolean): If `true`, the result will be an object.
@@ -153,7 +142,6 @@ Processes the input.
 Processes the current chunk into json output.
 
 #### Params
-
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:
  - `json` (Boolean): If `true`, the result will be an object.
@@ -175,7 +163,6 @@ Processes the current chunk into json output.
 Processes the current chunk of text.
 
 #### Params
-
 - **String** `text`: The input text.
 - **Object** `options`: An object containing the following fields:
  - `json` (Boolean): If `true`, the result will be an object.
