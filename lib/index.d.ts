@@ -1,6 +1,8 @@
 // Type definitions for Anser
 // Project: https://github.com/IonicaBizau/anser
 
+type DecorationName = 'bold' | 'dim' | 'italic' | 'underline' | 'blink' | 'reverse' | 'hidden' | 'strikethrough';
+
 export interface AnserJsonEntry {
     /** The text. */
     content: string;
@@ -14,7 +16,10 @@ export interface AnserJsonEntry {
     bg_truecolor: string;
     /** `true` if a carriageReturn \r was fount at end of line. */
     clearLine: boolean;
-    decoration: null | 'bold' | 'dim' | 'italic' | 'underline' | 'blink' | 'reverse' | 'hidden' | 'strikethrough';
+    /** The decoration last declared before the text. */
+    decoration: null | DecorationName;
+    /** All decorations that apply to the text. */
+    decorations: Array<DecorationName>;
     /** `true` if the colors were processed, `false` otherwise. */
     was_processed: boolean;
     /** A function returning `true` if the content is empty, or `false` otherwise. */

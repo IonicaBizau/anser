@@ -436,6 +436,25 @@ describe("Anser", () => {
             });
         });
 
+        describe("use multiple text styles", () => {
+            describe("default", () => {
+                it("underline, blinking, bold, blue text on red background", () => {
+                    const start = "\x1B[4m" + "\x1B[5m" + "\x1B[1;34m" + "\x1B[41m" + "foo" + "\x1B[0m" + "bar";
+                    const expected = '<span style="color:rgb(0, 0, 187);background-color:rgb(187, 0, 0);font-weight:bold;text-decoration:underline blink">foo</span>bar';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+            });
+            describe("with classes", () => {
+                it("underline, blinking, bold, blue text on red background", () => {
+                    const start = "\x1B[4m" + "\x1B[5m" + "\x1B[1;34m" + "\x1B[41m" + "foo" + "\x1B[0m" + "bar";
+                    const expected = '<span class="ansi-blue-fg ansi-red-bg ansi-underline ansi-blink ansi-bold">foo</span>bar';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+            });
+        });
+
         describe("ignore unsupported CSI", () => {
             it("should correctly convert a string similar to CSI", () => {
                 // https://github.com/drudru/Anser/pull/15
