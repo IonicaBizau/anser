@@ -418,14 +418,18 @@ This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), 
 If you are using this library in one of your projects, add it in this list. :sparkles:
 
  - `react-native`
+ - `react-native-windows`
  - `ansi-to-react`
  - `mesh-devtool`
- - `nuclide-commons-ui`
  - `@next/react-dev-overlay`
+ - `nuclide-commons-ui`
  - `transformime`
  - `@viankakrisna/react-dev-utils`
  - `react-webpack-build-helper`
  - `redux-devtools-trace-monitor`
+ - `ansi-to-json`
+ - `@axio/react-dev-utils`
+ - `react-error-overlay-dangerous`
  - `timer-react-dev-utils`
  - `react-dev-utils-extra`
  - `ansi-html-themed`
@@ -434,16 +438,16 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@jjavery/react-error-overlay`
  - `lambda-dev-utils`
  - `react-error-overlay-canary`
- - `@axio/react-dev-utils`
- - `react-error-overlay-dangerous`
  - `@classflow/react-dev-utils`
- - `ansi-to-json`
  - `nuclide`
  - `react-native-okhttp-fork`
  - `@devpodio/console`
  - `ipynb2html`
- - `webpack-isomorphic-dev-middleware`
+ - `ipynb2html-fix`
  - `@theia/console`
+ - `react-native-macos`
+ - `webpack-isomorphic-dev-middleware`
+ - `@ehyland-org/react-error-overlay`
  - `stack-frame-overlay`
  - `cycle-dev-utils`
  - `@viankakrisna/react-error-overlay`
@@ -452,7 +456,6 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `ansi-to-react-with-options`
  - `@plansys/react-dev-utils`
  - `zc-react-dev-utils`
- - `@ehyland-org/react-error-overlay`
  - `react-dev-utils-custom-hmr`
  - `ansi-to-react-with-classes`
  - `linklog`
@@ -460,17 +463,20 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `react-error-guard`
  - `singularityui-tailer`
  - `@unforgiven/react-native`
- - `react-ansi`
  - `@digibear/socket-bridge`
  - `ada-pack`
  - `react-native-hlf-wrapper`
  - `webpack-universal-compiler`
  - `@prague-digi/react-error-overlay`
- - `kunai`
  - `@apardellass/react-native-audio-stream`
- - `react-native-tvos`
  - `react-native-plugpag-wrapper`
  - `@codewars/jest-reporter`
+ - `react-native-tvos`
+ - `@proteria/react-scripts`
+ - `kunai`
+ - `@office-iss/react-native-win32`
+ - `react-ansi`
+ - `react-native-pulsator-native`
 
 
 
