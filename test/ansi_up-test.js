@@ -436,6 +436,68 @@ describe("Anser", () => {
             });
         });
 
+        describe("use multiple text styles", () => {
+            describe("default", () => {
+                it("underline, blinking, bold, blue text on red background", () => {
+                    const start = "\x1B[4m" + "\x1B[5m" + "\x1B[1;34m" + "\x1B[41m" + "foo" + "\x1B[0m" + "bar";
+                    const expected = '<span style="color:rgb(0, 0, 187);background-color:rgb(187, 0, 0);font-weight:bold;text-decoration:underline blink">foo</span>bar';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+            });
+            describe("with classes", () => {
+                it("underline, blinking, bold, blue text on red background", () => {
+                    const start = "\x1B[4m" + "\x1B[5m" + "\x1B[1;34m" + "\x1B[41m" + "foo" + "\x1B[0m" + "bar";
+                    const expected = '<span class="ansi-blue-fg ansi-red-bg ansi-underline ansi-blink ansi-bold">foo</span>bar';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+            });
+        });
+
+        describe("reverse/inverse colors", () => {
+            describe("default", () => {
+                it("blue text on red background, to red text on blue background", () => {
+                    const start = "\x1B[7m" + "\x1B[34m" + "\x1B[41m" + "foo" + "\x1B[0m";
+                    const expected = '<span style="color:rgb(187, 0, 0);background-color:rgb(0, 0, 187)" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+                it("blue text inversed to be blue background", () => {
+                    const start = "\x1B[7m" + "\x1B[34m" + "foo" + "\x1B[0m";
+                    const expected = '<span style="color:rgb(0, 0, 0);background-color:rgb(0, 0, 187)" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+                it("red background inversed to be red text", () => {
+                    const start = "\x1B[7m" + "\x1B[41m" + "foo" + "\x1B[0m";
+                    const expected = '<span style="color:rgb(187, 0, 0);background-color:rgb(255,255,255)" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+            });
+            describe("with classes", () => {
+                it("blue text on red background, to red text on blue background", () => {
+                    const start = "\x1B[7m" + "\x1B[34m" + "\x1B[41m" + "foo" + "\x1B[0m";
+                    const expected = '<span class="ansi-red-fg ansi-blue-bg" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+                it("blue text inversed to be blue background", () => {
+                    const start = "\x1B[7m" + "\x1B[34m" + "foo" + "\x1B[0m";
+                    const expected = '<span class="ansi-black-fg ansi-blue-bg" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+                it("red background inversed to be red text", () => {
+                    const start = "\x1B[7m" + "\x1B[41m" + "foo" + "\x1B[0m";
+                    const expected = '<span class="ansi-red-fg ansi-white-bg" data-ansi-is-inverted="true">foo</span>';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+            });
+        });
+
         describe("ignore unsupported CSI", () => {
             it("should correctly convert a string similar to CSI", () => {
                 // https://github.com/drudru/Anser/pull/15
