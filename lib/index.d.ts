@@ -36,7 +36,7 @@ export interface AnserOptions {
 
 type OptionsWithJson = AnserOptions & { json: true };
 
-export default class Anser {
+export = class Anser {
     /**
      * Escape the input HTML.
      *
