@@ -20,10 +20,10 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*",
     "jshint": "*",
-    "jslint": "*"
+    "jslint": "*",
+    "mocha": "*",
+    "should": "*"
   },
   "homepage": "https://github.com/IonicaBizau/anser#readme",
   "directories": {
@@ -41,7 +41,9 @@
           "Allows converting the input into JSON output.",
           "HTML escaping",
           "Converts links into HTML elements",
-          "Friendly APIs to use with  virtual dom libraries"
+          "Friendly APIs to use with virtual dom libraries",
+          "Supports 3/4 bit colors, true-color, multiple decorations, reverse/invert colors",
+          "Optionally, automatically contines unfinished text styling"
         ]
       }
     ],

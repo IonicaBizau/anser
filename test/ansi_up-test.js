@@ -498,6 +498,64 @@ describe("Anser", () => {
             });
         });
 
+        describe("carry over styling between calls", () => {
+          describe("default", () => {
+              it("underline, bold, blue text, carry on to next call", () => {
+                  const instance = new Anser();
+                  const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+                  const expected1 = 'bar<span style="color:rgb(0, 0, 187);font-weight:bold;text-decoration:underline">foo</span>';
+                  const result1 = instance.ansiToHtml(start1, { continue: true });
+                  const start2 = "foo" + "\x1B[0m" + "bar";
+                  const expected2 = '<span style="color:rgb(0, 0, 187);font-weight:bold;text-decoration:underline">foo</span>bar';
+                  const result2 = instance.ansiToHtml(start2, { continue: true });
+                  result1.should.eql(expected1);
+                  result2.should.eql(expected2);
+              });
+          });
+          describe("with classes", () => {
+              it("underline, bold, blue text, carry on to next call", () => {
+                  const instance = new Anser();
+                  const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+                  const expected1 = 'bar<span class="ansi-blue-fg ansi-underline ansi-bold">foo</span>';
+                  const result1 = instance.ansiToHtml(start1, {use_classes: true, continue: true });
+                  const start2 = "foo" + "\x1B[0m" + "bar";
+                  const expected2 = '<span class="ansi-blue-fg ansi-underline ansi-bold">foo</span>bar';
+                  const result2 = instance.ansiToHtml(start2, {use_classes: true, continue: true });
+                  result1.should.eql(expected1);
+                  result2.should.eql(expected2);
+              });
+          });
+        });
+
+        describe("does not carry over styling between calls", () => {
+          describe("default", () => {
+              it("underline, bold, blue text, does not carry on to next call", () => {
+                  const instance = new Anser();
+                  const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+                  const expected1 = 'bar<span style="color:rgb(0, 0, 187);font-weight:bold;text-decoration:underline">foo</span>';
+                  const result1 = instance.ansiToHtml(start1);
+                  const start2 = "foo" + "\x1B[0m" + "bar";
+                  const expected2 = 'foobar';
+                  const result2 = instance.ansiToHtml(start2);
+                  result1.should.eql(expected1);
+                  result2.should.eql(expected2);
+              });
+          });
+          describe("with classes", () => {
+              it("underline, bold, blue text, does not carry on to next call", () => {
+                  const instance = new Anser();
+                  const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+                  const expected1 = 'bar<span class="ansi-blue-fg ansi-underline ansi-bold">foo</span>';
+                  const result1 = instance.ansiToHtml(start1, { use_classes: true });
+                  const start2 = "foo" + "\x1B[0m" + "bar";
+                  const expected2 = 'foobar';
+                  const result2 = instance.ansiToHtml(start2, { use_classes: true });
+                  result1.should.eql(expected1);
+                  result2.should.eql(expected2);
+              });
+          });
+        });
+
         describe("ignore unsupported CSI", () => {
             it("should correctly convert a string similar to CSI", () => {
                 // https://github.com/drudru/Anser/pull/15
@@ -604,6 +662,36 @@ describe("Anser", () => {
                 remove_empty: true
             });
             output[0].clearLine.should.eql(true);
+        });
+        it("should carry on styling to next call", () => {
+          const instance = new Anser();
+          const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+          const output1 = instance.ansiToJson(start1, {remove_empty: true, continue: true });
+          const start2 = "foo" + "\x1B[0m" + "bar";
+          const output2 = instance.ansiToJson(start2, {remove_empty: true, continue: true });
+          output1[0].decorations.should.be.an.Array();
+          output1[0].decorations.should.be.empty();
+          output1[1].decorations.should.be.an.Array();
+          output1[1].decorations.should.be.eql([ 'underline', 'bold' ]);
+          output2[0].decorations.should.be.an.Array();
+          output2[0].decorations.should.be.eql([ 'underline', 'bold' ]);
+          output2[1].decorations.should.be.an.Array();
+          output2[1].decorations.should.be.empty();
+        });
+        it("should not carry on styling to next call", () => {
+          const instance = new Anser();
+          const start1 = "bar" + "\x1B[4m" + "\x1B[1;34m" + "foo";
+          const output1 = instance.ansiToJson(start1, {remove_empty: true });
+          const start2 = "foo" + "\x1B[0m" + "bar";
+          const output2 = instance.ansiToJson(start2, {remove_empty: true });
+          output1[0].decorations.should.be.an.Array();
+          output1[0].decorations.should.be.empty();
+          output1[1].decorations.should.be.an.Array();
+          output1[1].decorations.should.be.eql([ 'underline', 'bold' ]);
+          output2[0].decorations.should.be.an.Array();
+          output2[0].decorations.should.be.empty();
+          output2[1].decorations.should.be.an.Array();
+          output2[1].decorations.should.be.empty();
         });
     });
 });

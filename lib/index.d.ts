@@ -31,7 +31,10 @@ export interface AnserOptions {
     json?: boolean;
     /** If `true`, HTML classes will be appended to the HTML output. */
     use_classes?: boolean;
+    /** Remove parts not containing any text from output */
     remove_empty?: boolean;
+    /** Controls the "continue styling" feature. Note: doesn't work with static methods */
+    continue?: boolean;
 }
 
 type OptionsWithJson = AnserOptions & { json: true };
