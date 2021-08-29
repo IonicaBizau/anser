@@ -1,42 +1,45 @@
 // Type definitions for Anser
 // Project: https://github.com/IonicaBizau/anser
 
-type DecorationName = 'bold' | 'dim' | 'italic' | 'underline' | 'blink' | 'reverse' | 'hidden' | 'strikethrough';
+declare namespace Anser {
+    type DecorationName = 'bold' | 'dim' | 'italic' | 'underline' | 'blink' | 'reverse' | 'hidden' | 'strikethrough';
 
-export interface AnserJsonEntry {
-    /** The text. */
-    content: string;
-    /** The foreground color. */
-    fg: string;
-    /** The background color. */
-    bg: string;
-    /** The foreground true color (if 16m color is enabled). */
-    fg_truecolor: string;
-    /** The background true color (if 16m color is enabled). */
-    bg_truecolor: string;
-    /** `true` if a carriageReturn \r was fount at end of line. */
-    clearLine: boolean;
-    /** The decoration last declared before the text. */
-    decoration: null | DecorationName;
-    /** All decorations that apply to the text. */
-    decorations: Array<DecorationName>;
-    /** `true` if the colors were processed, `false` otherwise. */
-    was_processed: boolean;
-    /** A function returning `true` if the content is empty, or `false` otherwise. */
-    isEmpty(): boolean;
+    export interface AnserJsonEntry {
+        /** The text. */
+        content: string;
+        /** The foreground color. */
+        fg: string;
+        /** The background color. */
+        bg: string;
+        /** The foreground true color (if 16m color is enabled). */
+        fg_truecolor: string;
+        /** The background true color (if 16m color is enabled). */
+        bg_truecolor: string;
+        /** `true` if a carriageReturn \r was fount at end of line. */
+        clearLine: boolean;
+        /** The decoration last declared before the text. */
+        decoration: null | DecorationName;
+        /** All decorations that apply to the text. */
+        decorations: Array<DecorationName>;
+        /** `true` if the colors were processed, `false` otherwise. */
+        was_processed: boolean;
+
+        /** A function returning `true` if the content is empty, or `false` otherwise. */
+        isEmpty(): boolean;
+    }
+
+    export interface AnserOptions {
+        /** If `true`, the result will be an object. */
+        json?: boolean;
+        /** If `true`, HTML classes will be appended to the HTML output. */
+        use_classes?: boolean;
+        remove_empty?: boolean;
+    }
+
+    type OptionsWithJson = AnserOptions & { json: true };
 }
 
-export interface AnserOptions {
-    /** If `true`, the result will be an object. */
-    json?: boolean;
-    /** If `true`, HTML classes will be appended to the HTML output. */
-    use_classes?: boolean;
-    remove_empty?: boolean;
-}
-
-type OptionsWithJson = AnserOptions & { json: true };
-
-export = class Anser {
+declare class Anser {
     /**
      * Escape the input HTML.
      *
@@ -83,7 +86,7 @@ export = class Anser {
      * @param options The options.
      * @returns The HTML output.
      */
-    static ansiToHtml (txt: string, options?: AnserOptions): string;
+    static ansiToHtml (txt: string, options?: Anser.AnserOptions): string;
 
     /**
      * Converts ANSI input into JSON output.
@@ -92,7 +95,7 @@ export = class Anser {
      * @param options The options.
      * @returns The HTML output.
      */
-    static ansiToJson (txt: string, options?: AnserOptions): AnserJsonEntry[];
+    static ansiToJson (txt: string, options?: Anser.AnserOptions): Anser.AnserJsonEntry[];
 
     /**
      * Converts ANSI input into text output.
@@ -100,7 +103,7 @@ export = class Anser {
      * @param txt The input text.
      * @returns The text output.
      */
-    static ansiToText (txt: string, options?: AnserOptions): string;
+    static ansiToText (txt: string, options?: Anser.AnserOptions): string;
 
     /**
      * Sets up the palette.
@@ -130,7 +133,7 @@ export = class Anser {
      * @param options The options.
      * @returns The HTML output.
      */
-    ansiToHtml (txt: string, options?: AnserOptions): string;
+    ansiToHtml (txt: string, options?: Anser.AnserOptions): string;
 
     /**
      * Converts ANSI input into HTML output.
@@ -139,7 +142,7 @@ export = class Anser {
      * @param options The options.
      * @returns The JSON output.
      */
-    ansiToJson (txt: string, options?: AnserOptions): AnserJsonEntry[];
+    ansiToJson (txt: string, options?: Anser.AnserOptions): Anser.AnserJsonEntry[];
 
     /**
      * Converts ANSI input into HTML output.
@@ -147,7 +150,7 @@ export = class Anser {
      * @param txt The input text.
      * @returns The text output.
      */
-    ansiToText (txt: string, options?: AnserOptions): string;
+    ansiToText (txt: string, options?: Anser.AnserOptions): string;
 
     /**
      * Processes the input.
@@ -156,8 +159,8 @@ export = class Anser {
      * @param options The options.
      * @param markup If false, the colors will not be parsed.
      */
-    process (txt: string, options: OptionsWithJson, markup?: boolean): AnserJsonEntry[];
-    process (txt: string, options?: AnserOptions, markup?: boolean): string;
+    process (txt: string, options: Anser.OptionsWithJson, markup?: boolean): Anser.AnserJsonEntry[];
+    process (txt: string, options?: Anser.AnserOptions, markup?: boolean): string;
 
     /**
      * Processes the current chunk into json output.
@@ -167,7 +170,7 @@ export = class Anser {
      * @param markup If false, the colors will not be parsed.
      * @return The JSON output.
      */
-    processChunkJson (text: string, options?: AnserOptions, markup?: boolean): AnserJsonEntry;
+    processChunkJson (text: string, options?: Anser.AnserOptions, markup?: boolean): Anser.AnserJsonEntry;
 
     /**
      * Processes the current chunk of text.
@@ -177,6 +180,8 @@ export = class Anser {
      * @param markup If false, the colors will not be parsed.
      * @return The result (object if `json` is wanted back or string otherwise).
      */
-    processChunk (text: string, options: OptionsWithJson, markup?: boolean): AnserJsonEntry;
-    processChunk (text: string, options?: AnserOptions, markup?: boolean): string;
+    processChunk (text: string, options: Anser.OptionsWithJson, markup?: boolean): Anser.AnserJsonEntry;
+    processChunk (text: string, options?: Anser.AnserOptions, markup?: boolean): string;
 }
+
+export = Anser;
