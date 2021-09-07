@@ -147,9 +147,17 @@ console.log(Anser.ansiToJson(txt));
 
 
 
-When using **TypeScript** you can do the following:
+When using **TypeScript** without --esModuleInterop enabled you can do the following:
 ```ts
-import * as Anser from 'anser';
+import Anser = require('anser');
+const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
+console.log(Anser.ansiToHtml(txt));
+// <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
+```
+
+Or with --esModuleInterop enabled you can do the following:
+```ts
+import Anser from 'anser';
 const txt = "\u001b[38;5;196mHello\u001b[39m \u001b[48;5;226mWorld\u001b[49m";
 console.log(Anser.ansiToHtml(txt));
 // <span style="color:rgb(255, 0, 0)">Hello</span> <span style="background-color:rgb(255, 255, 0)">World</span>
@@ -418,17 +426,22 @@ This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), 
 If you are using this library in one of your projects, add it in this list. :sparkles:
 
  - `react-native`
- - `react-native-windows`
+ - `gatsby`
  - `ansi-to-react`
- - `mesh-devtool`
+ - `react-native-windows`
  - `@next/react-dev-overlay`
+ - `@cubejs-client/react`
+ - `mesh-devtool`
  - `nuclide-commons-ui`
  - `@atom-ide-community/nuclide-commons-ui`
+ - `@redux-devtools/inspector-monitor-trace-tab`
+ - `@theia/console`
  - `transformime`
  - `@viankakrisna/react-dev-utils`
  - `react-webpack-build-helper`
  - `ansi-to-json`
  - `redux-devtools-trace-monitor`
+ - `@kui-shell/plugin-client-common`
  - `@axio/react-dev-utils`
  - `react-error-overlay-dangerous`
  - `timer-react-dev-utils`
@@ -440,13 +453,11 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `lambda-dev-utils`
  - `react-error-overlay-canary`
  - `@classflow/react-dev-utils`
- - `nuclide`
  - `react-native-okhttp-fork`
  - `@devpodio/console`
  - `ipynb2html-fix`
  - `ipynb2html`
  - `webpack-isomorphic-dev-middleware`
- - `@theia/console`
  - `react-native-macos`
  - `@ehyland-org/react-error-overlay`
  - `stack-frame-overlay`
@@ -462,7 +473,6 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `linklog`
  - `@naze/error`
  - `react-error-guard`
- - `singularityui-tailer`
  - `@unforgiven/react-native`
  - `@digibear/socket-bridge`
  - `ada-pack`
@@ -475,18 +485,38 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@proteria/react-scripts`
  - `kunai`
  - `react-native-kakao-maps`
- - `react-ansi`
  - `@geeky-apo/react-native-advanced-clipboard`
  - `native-apple-login`
  - `native-google-login`
  - `@ryfow/react-native-windows`
- - `native-kakao-login`
  - `@prague-digi/react-error-overlay`
  - `@hemith/react-native-tnk`
  - `react-native-sf`
  - `react-native-contact-list`
  - `@corelmax/react-native-my2c2p-sdk`
+ - `singularityui-tailer`
+ - `react-ansi`
+ - `react-native-responsive-size`
+ - `rn-flatlist-fork`
+ - `react-native-test-module-hhh`
+ - `react-native-is7`
+ - `@alloc/react-error-overlay`
+ - `@openpolitica/matomo-next`
+ - `@datalogic/react-native-datalogic-module`
+ - `@blkmarketco/components-library`
+ - `birken-react-native-community-image-editor`
+ - `native-kakao-login`
+ - `react-native-modal-progress-bar`
+ - `react-native-savv`
+ - `nuclide`
+ - `react-native-dsphoto-module`
+ - `rn-custom-tabview`
+ - `react-native-dm-player`
+ - `@felipesimmi/react-native-datalogic-module`
  - `react-native-tvos`
+ - `react-native-ytximkit`
+ - `@mindinventory/rn-top-navbar`
+ - `react-native-flyy`
  - `@office-iss/react-native-win32`
 
 
