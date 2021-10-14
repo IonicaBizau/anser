@@ -355,6 +355,8 @@ Processes the current chunk into json output.
  - `was_processed` (Bolean): `true` if the colors were processed, `false` otherwise.
  - `isEmpty` (Function): A function returning `true` if the content is empty, or `false` otherwise.
 
+Add several widely used style codes
+
 ### `processChunk(text, options, markup)`
 Processes the current chunk of text.
 
@@ -433,91 +435,92 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@cubejs-client/react`
  - `mesh-devtool`
  - `nuclide-commons-ui`
- - `@atom-ide-community/nuclide-commons-ui`
  - `@redux-devtools/inspector-monitor-trace-tab`
+ - `@atom-ide-community/nuclide-commons-ui`
  - `@theia/console`
  - `transformime`
  - `@viankakrisna/react-dev-utils`
- - `react-webpack-build-helper`
  - `ansi-to-json`
  - `redux-devtools-trace-monitor`
  - `@kui-shell/plugin-client-common`
- - `@axio/react-dev-utils`
- - `react-error-overlay-dangerous`
+ - `react-webpack-build-helper`
  - `timer-react-dev-utils`
+ - `react-native-macos`
+ - `@axio/react-dev-utils`
  - `react-dev-utils-extra`
+ - `webpack-isomorphic-dev-middleware`
  - `ansi-html-themed`
+ - `react-native-okhttp-fork`
  - `uyun-react-dev-utils`
+ - `ipynb2html-fix`
  - `react-dev-utils-sebfl-update`
  - `@jjavery/react-error-overlay`
  - `lambda-dev-utils`
+ - `ipynb2html`
  - `react-error-overlay-canary`
  - `@classflow/react-dev-utils`
- - `react-native-okhttp-fork`
+ - `react-error-overlay-dangerous`
  - `@devpodio/console`
- - `ipynb2html-fix`
- - `ipynb2html`
- - `webpack-isomorphic-dev-middleware`
- - `react-native-macos`
- - `@ehyland-org/react-error-overlay`
- - `stack-frame-overlay`
- - `cycle-dev-utils`
- - `@viankakrisna/react-error-overlay`
- - `callstack-task-react-error-overlay`
- - `callstack-task-react-dev-utils`
- - `ansi-to-react-with-options`
- - `@plansys/react-dev-utils`
- - `zc-react-dev-utils`
- - `react-dev-utils-custom-hmr`
- - `ansi-to-react-with-classes`
- - `linklog`
- - `@naze/error`
- - `react-error-guard`
- - `@unforgiven/react-native`
- - `@digibear/socket-bridge`
- - `ada-pack`
- - `react-native-hlf-wrapper`
- - `webpack-universal-compiler`
- - `@apardellass/react-native-audio-stream`
- - `react-native-plugpag-wrapper`
- - `@codewars/jest-reporter`
- - `react-native-pulsator-native`
- - `@proteria/react-scripts`
- - `kunai`
- - `react-native-kakao-maps`
- - `@geeky-apo/react-native-advanced-clipboard`
- - `native-apple-login`
- - `native-google-login`
- - `@ryfow/react-native-windows`
- - `@prague-digi/react-error-overlay`
- - `@hemith/react-native-tnk`
- - `react-native-sf`
- - `react-native-contact-list`
- - `@corelmax/react-native-my2c2p-sdk`
- - `singularityui-tailer`
- - `react-ansi`
- - `react-native-responsive-size`
- - `rn-flatlist-fork`
- - `react-native-test-module-hhh`
- - `react-native-is7`
- - `@alloc/react-error-overlay`
- - `@openpolitica/matomo-next`
- - `@datalogic/react-native-datalogic-module`
- - `@blkmarketco/components-library`
- - `birken-react-native-community-image-editor`
  - `native-kakao-login`
- - `react-native-modal-progress-bar`
- - `react-native-savv`
- - `nuclide`
- - `react-native-dsphoto-module`
- - `rn-custom-tabview`
- - `react-native-dm-player`
- - `@felipesimmi/react-native-datalogic-module`
- - `react-native-tvos`
+ - `linklog`
  - `react-native-ytximkit`
  - `@mindinventory/rn-top-navbar`
+ - `cycle-dev-utils`
+ - `@viankakrisna/react-error-overlay`
+ - `callstack-task-react-dev-utils`
+ - `webpack-universal-compiler`
+ - `@codewars/jest-reporter`
+ - `react-native-kakao-maps`
+ - `@hemith/react-native-tnk`
+ - `react-native-contact-list`
+ - `react-native-is7`
+ - `@nib/e2e-core`
+ - `react-native-biometric-authenticate`
+ - `@corelmax/react-native-my2c2p-sdk`
+ - `@proteria/react-scripts`
+ - `@prague-digi/react-error-overlay`
+ - `native-apple-login`
+ - `react-ansi`
+ - `rn-custom-tabview`
+ - `@felipesimmi/react-native-datalogic-module`
+ - `@blkmarketco/components-library`
+ - `@datalogic/react-native-datalogic-module`
+ - `ansi-to-react-with-options`
+ - `callstack-task-react-error-overlay`
  - `react-native-flyy`
+ - `@geeky-apo/react-native-advanced-clipboard`
+ - `@apardellass/react-native-audio-stream`
+ - `kunai`
+ - `react-native-responsive-size`
+ - `singularityui-tailer`
+ - `rn-flatlist-fork`
+ - `@unforgiven/react-native`
+ - `ansi-to-react-with-classes`
+ - `react-native-dsphoto-module`
+ - `react-native-tvos`
+ - `react-error-guard`
+ - `@plansys/react-dev-utils`
+ - `react-native-plugpag-wrapper`
+ - `react-native-pulsator-native`
+ - `react-native-hlf-wrapper`
+ - `@alloc/react-error-overlay`
+ - `birken-react-native-community-image-editor`
+ - `react-dev-utils-custom-hmr`
+ - `nuclide`
+ - `@ehyland-org/react-error-overlay`
+ - `@naze/error`
+ - `ada-pack`
  - `@office-iss/react-native-win32`
+ - `react-native-sf`
+ - `native-google-login`
+ - `zc-react-dev-utils`
+ - `react-native-dm-player`
+ - `react-native-test-module-hhh`
+ - `@openpolitica/matomo-next`
+ - `@ryfow/react-native-windows`
+ - `react-native-modal-progress-bar`
+ - `stack-frame-overlay`
+ - `@digibear/socket-bridge`
 
 
 

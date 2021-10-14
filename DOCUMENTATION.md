@@ -171,6 +171,8 @@ Processes the current chunk into json output.
  - `was_processed` (Bolean): `true` if the colors were processed, `false` otherwise.
  - `isEmpty` (Function): A function returning `true` if the content is empty, or `false` otherwise.
 
+Add several widely used style codes
+
 ### `processChunk(text, options, markup)`
 Processes the current chunk of text.
 
