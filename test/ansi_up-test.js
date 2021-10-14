@@ -498,6 +498,25 @@ describe("Anser", () => {
             });
         });
 
+        describe("reset text styles with specific codes", () => {
+            describe("default", () => {
+                it('Normal intensity', () => {
+                    const start = "\x1B[1m" + "\x1B[2m" + "foo" + "\x1B[22m" + "bar";
+                    const expected = '<span style="font-weight:bold;opacity:0.5">foo</span>bar';
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+            });
+            describe("with classes", () => {
+                it('Normal intensity', () => {
+                    const start = "\x1B[1m" + "\x1B[2m" + "foo" + "\x1B[22m" + "bar";
+                    const expected = '<span class="ansi-bold ansi-dim">foo</span>bar';
+                    const l = Anser.ansiToHtml(start, {use_classes: true});
+                    l.should.eql(expected);
+                });
+            });
+        });
+
         describe("ignore unsupported CSI", () => {
             it("should correctly convert a string similar to CSI", () => {
                 // https://github.com/drudru/Anser/pull/15
