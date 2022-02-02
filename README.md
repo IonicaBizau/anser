@@ -280,97 +280,6 @@ Escapes the input text.
 #### Return
 - **String** The escpaed HTML output.
 
-### `linkify(txt)`
-Adds HTML link elements.
-
-#### Params
-
-- **String** `txt`: The input text.
-
-#### Return
-- **String** The HTML output containing link elements.
-
-### `ansiToHtml(txt, options)`
-Converts ANSI input into HTML output.
-
-#### Params
-
-- **String** `txt`: The input text.
-- **Object** `options`: The options passed ot the `process` method.
-
-#### Return
-- **String** The HTML output.
-
-### `ansiToJson(txt, options)`
-Converts ANSI input into HTML output.
-
-#### Params
-
-- **String** `txt`: The input text.
-- **Object** `options`: The options passed ot the `process` method.
-
-#### Return
-- **String** The JSON output.
-
-### `ansiToText(txt)`
-Converts ANSI input into HTML output.
-
-#### Params
-
-- **String** `txt`: The input text.
-
-#### Return
-- **String** The text output.
-
-### `process(txt, options, markup)`
-Processes the input.
-
-#### Params
-
-- **String** `txt`: The input text.
-- **Object** `options`: An object passed to `processChunk` method, extended with:
- - `json` (Boolean): If `true`, the result will be an object.
- - `use_classes` (Boolean): If `true`, HTML classes will be appended to the HTML output.
-- **Boolean** `markup`:
-
-### `processChunkJson(text, options, markup)`
-Processes the current chunk into json output.
-
-#### Params
-
-- **String** `text`: The input text.
-- **Object** `options`: An object containing the following fields:
- - `json` (Boolean): If `true`, the result will be an object.
- - `use_classes` (Boolean): If `true`, HTML classes will be appended to the HTML output.
-- **Boolean** `markup`: If false, the colors will not be parsed.
-
-#### Return
-- **Object** The result object:
- - `content` (String): The text.
- - `fg` (String|null): The foreground color.
- - `bg` (String|null): The background color.
- - `fg_truecolor` (String|null): The foreground true color (if 16m color is enabled).
- - `bg_truecolor` (String|null): The background true color (if 16m color is enabled).
- - `clearLine` (Boolean): `true` if a carriageReturn \r was fount at end of line.
- - `was_processed` (Bolean): `true` if the colors were processed, `false` otherwise.
- - `isEmpty` (Function): A function returning `true` if the content is empty, or `false` otherwise.
-
-Add several widely used style codes
-
-### `processChunk(text, options, markup)`
-Processes the current chunk of text.
-
-#### Params
-
-- **String** `text`: The input text.
-- **Object** `options`: An object containing the following fields:
- - `json` (Boolean): If `true`, the result will be an object.
- - `use_classes` (Boolean): If `true`, HTML classes will be appended to the HTML output.
-- **Boolean** `markup`: If false, the colors will not be parsed.
-
-#### Return
-- **Object|String** The result (object if `json` is wanted back or string otherwise).
-
 
 
 
@@ -442,19 +351,19 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@viankakrisna/react-dev-utils`
  - `ansi-to-json`
  - `redux-devtools-trace-monitor`
+ - `@opensumi/ide-debug`
  - `@kui-shell/plugin-client-common`
  - `react-webpack-build-helper`
  - `timer-react-dev-utils`
  - `react-native-macos`
  - `@axio/react-dev-utils`
  - `react-dev-utils-extra`
- - `webpack-isomorphic-dev-middleware`
  - `ansi-html-themed`
+ - `webpack-isomorphic-dev-middleware`
  - `react-native-okhttp-fork`
  - `uyun-react-dev-utils`
  - `ipynb2html-fix`
  - `react-dev-utils-sebfl-update`
- - `@jjavery/react-error-overlay`
  - `lambda-dev-utils`
  - `ipynb2html`
  - `react-error-overlay-canary`
@@ -464,7 +373,6 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `native-kakao-login`
  - `linklog`
  - `react-native-ytximkit`
- - `@mindinventory/rn-top-navbar`
  - `cycle-dev-utils`
  - `@viankakrisna/react-error-overlay`
  - `callstack-task-react-dev-utils`
@@ -474,32 +382,38 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@hemith/react-native-tnk`
  - `react-native-contact-list`
  - `react-native-is7`
- - `@nib/e2e-core`
  - `react-native-biometric-authenticate`
+ - `react-native-tvos-nz`
+ - `@mindinventory/rn-top-navbar`
+ - `rn-adyen-dropin`
+ - `@classyllama/code-style`
+ - `react-native-ansi-view`
  - `@corelmax/react-native-my2c2p-sdk`
  - `@proteria/react-scripts`
- - `@prague-digi/react-error-overlay`
  - `native-apple-login`
  - `react-ansi`
  - `rn-custom-tabview`
  - `@felipesimmi/react-native-datalogic-module`
  - `@blkmarketco/components-library`
- - `@datalogic/react-native-datalogic-module`
  - `ansi-to-react-with-options`
  - `callstack-task-react-error-overlay`
+ - `@datalogic/react-native-datalogic-module`
+ - `@tasumaniadiabori/react-native-draggable-flatlist`
  - `react-native-flyy`
+ - `@prague-digi/react-error-overlay`
  - `@geeky-apo/react-native-advanced-clipboard`
  - `@apardellass/react-native-audio-stream`
  - `kunai`
  - `react-native-responsive-size`
- - `singularityui-tailer`
  - `rn-flatlist-fork`
  - `@unforgiven/react-native`
- - `ansi-to-react-with-classes`
  - `react-native-dsphoto-module`
- - `react-native-tvos`
  - `react-error-guard`
+ - `react-native-sayhello-module`
  - `@plansys/react-dev-utils`
+ - `singularityui-tailer`
+ - `react-native-tvos`
+ - `@saad27/react-native-bottom-tab-tour`
  - `react-native-plugpag-wrapper`
  - `react-native-pulsator-native`
  - `react-native-hlf-wrapper`
@@ -510,6 +424,7 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `@ehyland-org/react-error-overlay`
  - `@naze/error`
  - `ada-pack`
+ - `@jjavery/react-error-overlay`
  - `@office-iss/react-native-win32`
  - `react-native-sf`
  - `native-google-login`
@@ -521,6 +436,7 @@ If you are using this library in one of your projects, add it in this list. :spa
  - `react-native-modal-progress-bar`
  - `stack-frame-overlay`
  - `@digibear/socket-bridge`
+ - `userfetch`
 
 
 
