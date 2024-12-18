@@ -80,7 +80,7 @@ describe("Anser", () => {
         describe("mixed characters", () => {
             it("should escape a mix of characters that require escaping", () => {
                 const start = "<&>/\\'\"";
-                const expected = "&lt;&amp;&gt;/\\'\"";;
+                const expected = "&lt;&amp;&gt;/\\'&quot;";
                 const l = Anser.escapeForHtml(start);
                 l.should.eql(expected);
             });
