@@ -20,10 +20,10 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "jshint": "*",
-    "jslint": "*"
+    "jshint": "^2.13.6",
+    "jslint": "^0.12.1",
+    "mocha": "^11.1.0",
+    "should": "*"
   },
   "homepage": "https://github.com/IonicaBizau/anser#readme",
   "directories": {
@@ -74,7 +74,6 @@
     "thanks": "This project is highly based on [`ansi_up`](https://github.com/drudru/ansi_up), by [@drudru](https://github.com/drudru/). Thanks! :cake:"
   },
   "license": "MIT",
-  "dependencies": {},
   "files": [
     "bin/",
     "app/",
