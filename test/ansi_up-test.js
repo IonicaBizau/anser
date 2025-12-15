@@ -237,6 +237,30 @@ describe("Anser", () => {
                     const l = Anser.ansiToHtml(start);
                     l.should.eql(expected);
                 });
+                it("grayscale, foreground (first: 232)", () => {
+                    const start = "\x1B[38;5;232m" + "gray" + "\x1B[0m";
+                    const expected = "<span style=\"color:rgb(8, 8, 8)\">gray</span>";
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+                it("grayscale, foreground (middle: 240)", () => {
+                    const start = "\x1B[38;5;240m" + "gray" + "\x1B[0m";
+                    const expected = "<span style=\"color:rgb(88, 88, 88)\">gray</span>";
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+                it("grayscale, foreground (last: 255)", () => {
+                    const start = "\x1B[38;5;255m" + "gray" + "\x1B[0m";
+                    const expected = "<span style=\"color:rgb(238, 238, 238)\">gray</span>";
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
+                it("grayscale, background", () => {
+                    const start = "\x1B[48;5;240m" + "gray" + "\x1B[0m";
+                    const expected = "<span style=\"background-color:rgb(88, 88, 88)\">gray</span>";
+                    const l = Anser.ansiToHtml(start);
+                    l.should.eql(expected);
+                });
             });
 
             describe("transform extend colors (true color)", () => {
