@@ -78,15 +78,9 @@
   ],
   "license": "MIT",
   "files": [
-    "bin/",
-    "app/",
     "lib/",
     "dist/",
     "src/",
-    "scripts/",
-    "resources/",
-    "menu/",
-    "cli.js",
     "index.js",
     "index.d.ts"
   ]
