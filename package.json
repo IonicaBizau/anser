@@ -88,10 +88,6 @@
     "menu/",
     "cli.js",
     "index.js",
-    "index.d.ts",
-    "package-lock.json",
-    "bloggify.js",
-    "bloggify.json",
-    "bloggify/"
+    "index.d.ts"
   ]
 }
